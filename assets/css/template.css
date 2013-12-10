@@ -1,0 +1,185 @@
+.close_button {
+    background-color: #ABACB0;
+    border-radius: 10px 10px 10px 10px;
+    font-size: 13px;
+    height: 16px;
+    position: absolute;
+    right: 5px;
+    text-align: center;
+    top: 5px;
+    width: 16px;
+}
+
+.article .content_style img {
+    border: 0 none !important;
+    height: auto !important;
+}
+
+.content_padding {
+	padding: 10px;
+}
+
+.footer_style, .footer-style {
+    border-radius: 4px 4px 4px 4px;
+    font-size: 0.8em;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.carousel-control {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.album-holder .album-listed {	
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 1px 2px 1px rgb(112, 112, 112);
+    width: 227px;
+}
+
+.white_content {
+    background-color: rgba(30, 30, 30, 0.5);
+    border-radius: 4px 4px 4px 4px;
+    display: none;
+    height: 80%;
+    left: 0;
+    margin: auto;
+    padding: 10px;
+    position: fixed;
+    right: 0;
+    top: 10%;
+    width: 80%;
+    z-index: 1030;
+}
+
+.black_overlay{
+	display: none;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index:1001;
+	-moz-opacity: 0.8;
+	opacity:.80;
+	filter: alpha(opacity=80);
+}
+
+.photo_title {
+	border-radius: 8px 8px 0 0;
+}
+
+.photo_holder {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.photo_content, .photo-content {
+    border-radius: 8px 8px 8px 8px;
+}
+
+.photo_content ul li.album-listed a div.img-div, .photo-content ul li.album-listed a div.img-div {
+	height: 200px;
+	cursor: pointer;
+}
+
+.photo_content ul li.album-listed a .img-div .fadeout, .photo-content ul li.album-listed a .img-div .fadeout {
+	opacity: 1;
+    transition: opacity 0.5s ease 0s;
+	-moz-transition: opacity 0.5s ease 0s; /* Firefox 4 */
+	-webkit-transition: opacity 0.5s ease 0s; /* Safari and Chrome */
+	-o-transition: opacity 0.5s ease 0s; /* Opera */
+}
+
+.photo_content ul li.album-listed:hover a .img-div .fadeout, .photo-content ul li.album-listed:hover a .img-div .fadeout {
+	opacity: 0;
+}
+
+.photo_content ul li .photo-listted, .photo-content ul li .photo-listted {
+    background-color: transparent;
+    overflow: hidden;
+    width: 170px;
+}
+
+.img_photo {
+    max-height: 170px;
+    max-width: 160px;
+}
+
+.album-holder {
+    text-align: center;
+}
+
+
+/* Layout 3 Menu */
+.circle_container {
+    border-radius: 100px 100px 100px 100px;
+    height: 160px;
+    margin: 0 auto 10px;
+    overflow: hidden;
+    position: relative;
+    width: 160px;
+}
+.first_menu {
+    color: inherit;
+    cursor: pointer;
+    display: block;
+    left: 0;
+    line-height: 160px;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-shadow: none;
+}
+.menu_list {
+    display: none;
+}
+.menu_list ul {
+    display: table-cell;
+    height: 160px;
+    list-style: none outside none;
+    text-align: center;
+    vertical-align: middle;
+    width: 160px;
+}
+
+/**** blog frontend ****/
+.blog-content-fe {
+	padding: 10px;
+}
+.blog-content-fe .b-feeds:first-child {
+	margin-top: 0px;
+}
+.blog-content-fe .b-feeds {
+    background: none repeat scroll 0 0 white;
+    border: 2px solid rgb(203, 203, 203);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    color: rgb(137, 137, 137);
+    margin-top: 10px;
+}
+.blog-content-fe .b-feeds li.g-img2
+{
+	position: absolute;
+	width: 100%;
+	display: inline;
+}
+.blog-content-fe .b-feeds div.g-img1
+{
+	height: auto;
+}
+.blog-content-fe .b-feeds div.gimgl11
+{
+	margin-left:11px;
+}
+.blog-content-fe .b-feeds div.gimgl0
+{
+	margin-left:0;
+}
+.blog-content-fe .b-feeds div.g-img21
+{
+	margin-top:5px;
+	height: 193px;
+}

@@ -1,0 +1,1 @@
+<img src="<?php echo base_url()?>/img/team.png" width="140" height="50" />

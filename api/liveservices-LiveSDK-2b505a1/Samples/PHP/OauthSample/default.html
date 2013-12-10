@@ -1,0 +1,92 @@
+<script src="//js.live.net/v5.0/wl.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+function msn() {
+	var base_url = document.location.hostname;
+    // Update the following values
+	if(base_url == 'www.bolooka.com') {
+		var clientId = "00000000480AE84A";
+	}
+	if(base_url == 'alpha.bolooka.com') {
+		var clientId = "00000000440C6BD6";
+	}
+	var scope = ["wl.signin", "wl.basic", "wl.emails"],
+		redirectUri = 'http://'+base_url;
+
+	WL.init({ "client_id": clientId, "redirect_uri": redirectUri, "response_type": "token" });		
+	WL.Event.subscribe("auth.login", onLogin);
+	WL.Event.subscribe("auth.sessionChange", onSessionChange);
+
+	WL.login({ "scope": scope },
+		function (response) {
+			if (response.status == "connected") {
+				showUserData();
+			}
+			else {
+				alert("Could not connect, status = " + response.status);
+			}
+		}
+	);
+	
+	function onLogin() {
+		var session = WL.getSession();
+		if (session) {
+			// alert("You are signed in!");
+		}
+	}
+	 
+	function onSessionChange() {
+		var session = WL.getSession();
+		if (session) {
+			// alert("Your session has changed.");
+		}
+	}
+	
+	function showUserData() {
+        if (WL.getSession() != null) {
+            WL.api({ path: "me/picture", method: "get" }).then(
+				function (response) {
+					if (response.location) {
+						imgHolder.innerHTML = "<img src='" + response.location + "' />";
+					}
+				}
+			);
+
+            WL.api({ path: "me", method: "get" }).then(
+				function (response) {
+					$.post("signup/msn",
+						{
+							'id': response.id,
+							'first_name': response.first_name,
+							'email': (response.emails).preferred,
+							'last_name': response.last_name,
+							'gender': response.gender
+						},
+						function(html)
+						{
+							if(html == 'create new account')
+							{
+								if(response.first_name == null)
+								{
+									response.first_name = '';
+								}else if(response.last_name == null)
+								{  
+									response.last_name = '';
+								}
+								window.location = '?init='+response.id+'&name='+response.first_name+'&last='+response.last_name+'&email='+(response.emails).preferred+'&connect=msn';
+							}
+							else
+							{
+								window.location = 'manage';
+							}
+						}
+					);
+					console.log(response);
+				}
+			);
+        }
+	}
+}
+
+</script>
+<a href="#" class="mp_oss_i mp_oss_i_microsoft" onclick="msn()"><img src="<?php echo base_url() ?>img/msn_icon_drop.png" style="height: 17px; width: 17px;"> MSN </a>

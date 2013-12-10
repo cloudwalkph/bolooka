@@ -1,0 +1,69 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="100%" height="100%" version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+
+	<defs>
+		<linearGradient id="MyGrad" gradientUnits="userSpaceOnUse"
+		x1="100" y1="0" x2="500" y2="0">
+			<stop offset="0" style="stop-color:#ff00ff"/>
+			<stop offset=".33" style="stop-color:#88ff88"/>
+			<stop offset=".67" style="stop-color:#2020ff"/>
+			<stop offset="1" style="stop-color:#d00000"/>
+		</linearGradient>
+		<filter id="Matrix">
+			<feColorMatrix type="matrix"
+			values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0"/>
+		</filter>
+		<filter id="Saturate">
+			<feColorMatrix type="saturate" values="0.4"/>
+		</filter>
+		<filter id="HueRotate">
+			<feColorMatrix type="hueRotate" values="90"/>
+		</filter>
+		<filter id="Luminance">
+			<feColorMatrix type="luminanceToAlpha" result="a"/>
+			<feComposite in="SourceGraphic" in2="a" operator="in"/>
+		</filter>
+		
+		<filter id="grayscale">
+			<feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0, 0.3333 0.3333 0.3333 0 0, 0.3333 0.3333 0.3333 0 0, 0 0 0 1 0"/>
+		</filter>
+		
+		<filter id="invrot">
+			<feColorMatrix type="matrix" values="
+			-1 0 0 0 1
+			0 -1 0 0 1
+			0 0 -1 0 1
+			0 0 0 1 0"/>
+			<feColorMatrix type="hueRotate" values="180"/>
+		</filter>
+		
+		<filter id="lighting_filter">
+			<feDiffuseLighting result="result1">
+				<feSpotLight x="0" y="0" z="50" pointsAtX="300" pointsAtY="300" pointsAtZ="0" limitingConeAngle="20" specularExponent="5"/>
+			</feDiffuseLighting>
+			<feComposite operator="arithmetic" k1="1" k2="0" k3="0" k4="0" in="SourceGraphic" in2="result1"/>
+		</filter>
+		
+		<filter id="drop-shadow"> 
+			<feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>     [1]
+			<feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>     [2]
+			<feMerge>     [3]
+				<feMergeNode in="offsetBlur"/>
+				<feMergeNode in="SourceGraphic"/>
+			</feMerge>
+		</filter>
+		
+		<filter id="f1">
+		  <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
+		</filter>
+		
+		/* make noise */
+		<filter id="Turb4" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+			<feTurbulence type="fractalNoise" baseFrequency="0.4" numOctaves="4"/>
+		</filter>
+	</defs>
+</svg>

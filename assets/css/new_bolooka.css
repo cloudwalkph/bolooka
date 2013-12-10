@@ -1,0 +1,58 @@
+/**** slide animation in background *****/
+@-webkit-keyframes slide { from { background-position: 0 0; } to { background-position: 260px 0; }  }
+   @-moz-keyframes slide { from { background-position: 0 0; } to { background-position: 260px 0; }  }
+    @-ms-keyframes slide { from { background-position: 0 0; } to { background-position: 260px 0; }  }
+     @-o-keyframes slide { from { background-position: 0 0; } to { background-position: 260px 0; }  }
+        @keyframes slide { from { background-position: 0 0; } to { background-position: 260px 0; }  }
+
+.bgslide {
+  -webkit-animation: slide 20s linear 0s infinite;
+     -moz-animation: slide 20s linear 0s infinite;
+      -ms-animation: slide 20s linear 0s infinite;
+       -o-animation: slide 20s linear 0s infinite;
+          animation: slide 20s linear 0s infinite;
+}
+
+
+/***** animation for flexslider *****/
+.flex-direction-nav a {
+	transition: all 0.3s ease 0s;
+	-webkit-transition: all .3s ease;
+}
+
+.flexslider .flex-direction-nav .flex-disabled {
+	opacity: 0 !important;
+}
+
+
+/***** SVG settings *****/	
+.gray {
+	filter: url(filters.svg#grayscale);
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Chrome 19+ & Safari 6+ */
+}
+
+.light-effect {
+	filter: url(filters.svg#lighting_filter);
+}
+
+.dropshadow {
+	filter: url(filters.svg#drop-shadow);
+}
+
+.invrot {
+	filter: url(filters.svg#invrot);
+	-webkit-filter: invert(1);
+}
+
+.matrix {
+	filter: url(filters.svg#Matrix);
+}
+
+.blur {
+	filter: url(filters.svg#f1);
+}
+
+.noise {
+	filter: url(filters.svg#Turb4);
+}

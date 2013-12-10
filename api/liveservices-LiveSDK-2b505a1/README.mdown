@@ -1,0 +1,34 @@
+Live Connect Samples
+===========================
+
+These samples will show you how to integrate Windows Live services into your applications across Windows Phone, Windows, PHP, ASP.NET and other platforms.
+
+For license visit https://github.com/liveservices/LiveSDK/blob/master/Samples/LICENSE.txt
+
+Getting Started
+===============
+Getting started is easy. Just download the samples and run the projects.
+
+Setup Your Environment
+----------------------
+
+* Install [Git](http://git-scm.com/).
+
+* Pull the samples from GitHub:
+
+       git clone https://github.com/liveservices/LiveSDK.git
+
+Sample Applications
+-------------------
+
+This Github repository contains samples for:
+
+* Windows Phone
+
+* Windows
+
+* PHP
+
+* ASP.NET
+
+* iOS

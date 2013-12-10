@@ -1,0 +1,494 @@
+/***** Bolooka Styles *****/
+html {
+	overflow-y: scroll;
+}
+html, body {
+	height: 100%;
+}
+.trim {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*** Sidebar ***/
+	.modal .btn_color {
+		background: #f16120; /* Old browsers */
+		background: -moz-linear-gradient(top,  #f16120 0%, #e75210 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f16120), color-stop(100%,#e75210)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #f16120 0%,#e75210 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #f16120 0%,#e75210 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #f16120 0%,#e75210 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #f16120 0%,#e75210 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f16120', endColorstr='#e75210',GradientType=0 ); /* IE6-9 */
+		
+		text-shadow: none;
+		box-shadow: -2px 2px 5px -2px #ddd inset;
+		color: #fff;
+	}
+	.modal .btn_color:hover {
+		background: #e75311; /* Old browsers */
+		background: -moz-linear-gradient(top, #e75311 0%, #f16120 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e75311), color-stop(100%,#f16120)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #e75311 0%,#f16120 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #e75311 0%,#f16120 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, #e75311 0%,#f16120 100%); /* IE10+ */
+		background: linear-gradient(to bottom, #e75311 0%,#f16120 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e75311', endColorstr='#f16120',GradientType=0 ); /* IE6-9 */
+
+		box-shadow: 1px -2px 5px -2px #ddd inset;
+		color: #fff;
+	}
+.b-shop:hover {
+background: #949494; /* Old browsers */
+background: -moz-linear-gradient(top,  #949494 0%, #a2a2a2 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#949494), color-stop(100%,#a2a2a2)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #949494 0%,#a2a2a2 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #949494 0%,#a2a2a2 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #949494 0%,#a2a2a2 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #949494 0%,#a2a2a2 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#949494', endColorstr='#a2a2a2',GradientType=0 ); /* IE6-9 */
+
+    border: 1px solid #989898;
+    box-shadow: 0 0 1px 0 #d6d6d6 inset;
+    color: #FFFFFF;
+}
+.b-shop {
+background: #d6d6d6; /* Old browsers */
+background: -moz-linear-gradient(top,  #d6d6d6 0%, #b3b3b3 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d6d6d6), color-stop(100%,#b3b3b3)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #d6d6d6 0%,#b3b3b3 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #d6d6d6 0%,#b3b3b3 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #d6d6d6 0%,#b3b3b3 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #d6d6d6 0%,#b3b3b3 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d6d6', endColorstr='#b3b3b3',GradientType=0 ); /* IE6-9 */
+
+	border: 1px solid #989898;
+	box-shadow: 0 0 1px 0 #d6d6d6 inset;
+    color: #FFFFFF;
+    font-family: Helvetica;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    min-width: 86px;
+    text-shadow: 0 1px 0 #6E6E6E;
+}
+.nav-header {
+    font-size: 12px;
+    font-weight: normal;
+}
+.nav-list > li > a {
+    color: #3590EA;
+    font-family: Segoe UI Semibold;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 9px;
+}
+#feedback_button {
+    background-color: #FBF3EF;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 0 0 0 2px #EFE7E4;
+    color: #545454;
+    font-family: Segoe UI Semibold;
+    font-size: 16px;
+    padding: 5px 10px;
+    position: relative;
+    z-index: 1;
+}
+#imgprofile {
+    border: 3px solid rgb(190, 184, 175);
+    margin: 10px 0;
+}
+/*** ***/
+
+/*** for Inner Pages ***/
+body#inpgs {
+	background-image: url("../../img/inner-page-bg.png");
+}
+.page-body {
+    padding: 100px 0 240px;
+}
+.page-body .container {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(215, 215, 215, 0.34);
+    box-shadow: 6px 9px 0 -2px rgba(200, 184, 155, 0.3);
+}
+
+/* *****global button design**** */
+.active_action_button {
+    background: none repeat scroll 0 0 rgb(0, 130, 238);
+    border-radius: 0 0 0 0;
+    color: rgb(255, 255, 255);
+    text-shadow: none;
+}
+.active_action_button:hover {
+	background: #DDDDDD;
+	color: #0088CC;
+}
+
+/***** Dashboard *****/
+.post_item {
+    border-bottom: 1px dotted #CFCFCF;
+    padding-bottom: 15px;
+}
+/* */
+
+.form-horizontal .control-label {
+    font-family: Segoe UI Semibold, Tahoma;
+    font-size: 12px;
+}
+form .controls, form .controls > input, form .controls > select, form .controls > textarea {
+	font-family: Segoe UI;
+	font-size: 12px;
+}
+
+/** fb button **/
+.fb_bg {
+background: #7088ba; /* Old browsers */
+background: -moz-linear-gradient(top,  #7088ba 0%, #637bad 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7088ba), color-stop(100%,#637bad)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #7088ba 0%,#637bad 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #7088ba 0%,#637bad 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #7088ba 0%,#637bad 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #7088ba 0%,#637bad 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7088ba', endColorstr='#637bad',GradientType=0 ); /* IE6-9 */
+
+    border-radius: 3px 3px 3px 3px;
+    display: inline-block;
+	padding: 5px;
+}
+.fb_bg span {
+    padding: 5px;
+}
+.fb_bg:hover {
+	box-shadow: 1px 2px 4px -2px black inset;
+}
+/** **/
+
+/* jasny */
+.fileupload {
+    margin-bottom: 9px;
+}
+.fileupload .uneditable-input {
+    cursor: text;
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+.fileupload .thumbnail {
+    display: inline-block;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+}
+.fileupload .thumbnail > img {
+    max-height: 100%;
+    vertical-align: middle;
+}
+.fileupload .btn {
+    vertical-align: middle;
+}
+.fileupload-exists .fileupload-new, .fileupload-new .fileupload-exists {
+    display: none;
+}
+.fileupload-inline .fileupload-controls {
+    display: inline;
+}
+.fileupload-new .input-append .btn-file {
+    border-radius: 0 3px 3px 0;
+}
+.thumbnail-borderless .thumbnail {
+    border: medium none;
+    border-radius: 0 0 0 0;
+    box-shadow: none;
+    padding: 0;
+}
+.fileupload-new.thumbnail-borderless .thumbnail {
+    border: 1px solid #DDDDDD;
+}
+/* */
+
+
+/***** Marketplace Styles *****/
+#shop-container .item {
+    display: inline-block;
+	width: 214px;
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    margin: 10px;
+}
+#shop-container .item .box {
+    border-radius: 0 0 0 0;
+    padding: 10px;
+}
+#shop-container div.img_cont {
+}
+#shop-container .item img.zoomhover {
+    transition: max-width 0.5s ease 0s, max-height 0.5s ease 0s, margin-top 0.5s ease 0s, margin-left 0.5s ease 0s, box-shadow 0.5s ease 0s;
+	-moz-transition: max-width 0.5s ease 0s, max-height 0.5s ease 0s, margin-top 0.5s ease 0s, margin-left 0.5s ease 0s, box-shadow 0.5s ease 0s;
+	-webkit-transition: max-width 0.5s ease 0s, max-height 0.5s ease 0s, margin-top 0.5s ease 0s, margin-left 0.5s ease 0s;
+	-o-transition: max-width 0.5s ease 0s, max-height 0.5s ease 0s, margin-top 0.5s ease 0s, margin-left 0.5s ease 0s;
+	
+    background-color: #FFFFFF;
+	box-shadow: 0 0 0 0 black;
+}
+#shop-container .item img.zoomhover:hover {
+    box-shadow: 0 0 1px 0 black, 0 38px 20px -40px rgb(187, 187, 187);
+    margin-left: -24px;
+    margin-top: -24px;
+    max-width: 240px;
+}
+
+#shop-container .g-description-shop {
+    color: #343434;
+    font-family: Segoe UI;
+    font-size: 13px;
+    margin: 10px 0 5px;
+    text-align: left;
+}
+#shop-container .g-url-shop {
+    color: #3B80C2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#shop-container .g-url-shop:hover {
+    background-color: white;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+}
+#shop-container .g-url-shop a {
+    font-size: 12px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+#shop-container #infscr-loading {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9);
+    border-radius: 10px 10px 10px 10px;
+    bottom: 30px;
+    color: #222222;
+    font-size: 15px;
+    font-weight: bold;
+    left: 42%;
+    padding: 20px;
+    position: fixed;
+    text-align: center;
+    z-index: 100;
+}
+body#marketplace
+{
+	background-image: url("../../img/homepage/marketplace_bg.jpg");
+}
+#market-head {
+background: #ffffff;
+background: -moz-linear-gradient(top,  #ffffff 0%, #ffffff 70%, #f3f3f3 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(70%,#ffffff), color-stop(100%,#f3f3f3));
+background: -webkit-linear-gradient(top,  #ffffff 0%,#ffffff 70%,#f3f3f3 100%);
+background: -o-linear-gradient(top,  #ffffff 0%,#ffffff 70%,#f3f3f3 100%);
+background: -ms-linear-gradient(top,  #ffffff 0%,#ffffff 70%,#f3f3f3 100%);
+background: linear-gradient(to bottom,  #ffffff 0%,#ffffff 70%,#f3f3f3 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f3f3f3',GradientType=0 );
+
+    box-shadow: 0 2px 10px -6px black;
+    margin-bottom: 0;
+}
+#m_sg a {
+	color: rgb(53, 144, 234);
+	font-family: Segoe UI;
+	font-size: 12px;
+	padding: 5px;
+}
+.header_top {
+    margin: auto;
+    max-width: 1160px;
+    padding: 10px;
+}
+.search_text {
+    font-family: Segoe UI Semibold, Tahoma;
+}
+.search_but {
+    color: #FBF4E6;
+    font-family: Segoe UI Semibold, Tahoma;
+    text-shadow: none;
+}
+.ces_but {
+    background-color: rgb(203, 203, 203);
+    background-image: none;
+    border: 1px solid rgb(233, 233, 233);
+    color: rgb(251, 244, 230);
+    font-family: Segoe UI Semibold,Tahoma;
+    height: 32px;
+    text-shadow: none;
+}
+#m_nav {
+	border-top: 1px solid rgb(229, 229, 229);
+	font-size: 12px;
+	font-family: Segoe UI Semibold, Tahoma;
+}
+.categs {
+/*
+	columns: auto;
+	-webkit-columns: auto;
+    -moz-columns: auto;
+*/
+    background-color: #F3F1E5;
+    border: 1px solid #F3F1E5;
+    border-radius: 0 0 0 0;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.23);
+/*
+    max-width: 500px;
+    min-width: 273px;
+*/
+    text-align: left;
+}
+.navbar .nav > li > .categs.dropdown-menu:before {
+    border: medium none;
+}
+.navbar .nav > li > .categs.dropdown-menu:after {
+    border: medium none;
+}
+
+
+
+/* bootstrap dropdown hover effect */
+#bar_holder ul.nav > li > .left_menu:before {
+    border-bottom: medium none;
+}
+#bar_holder ul.nav > li > .left_menu:after {
+    border-bottom: medium none;
+}
+/* */
+.navbar-inner {
+	min-height: 38px;
+}
+
+		.market-content
+		{
+			padding: 20px;
+		}
+		.market-content .row .span2 .price-pro
+		{
+			color: #3590EA;
+		}
+		.market-content .row .span2 .sec
+		{
+			font-size: 11px;
+			margin-bottom:0;
+		}
+		.market-content .row .span2 .pro-title
+		{
+			font-size: 13px;
+			margin-bottom:0;
+		}
+		.market-content .row
+		{
+			margin-left:5px;
+		}
+		.market-content .row .span2
+		{
+			padding: 5px;
+			background: white;
+			border: 1px solid #DDD;
+			box-shadow: 0 0 15px -10px;
+			margin-bottom: 20px;
+			text-align:center;
+		}
+		.big-bar .cat2 .span12 li a:hover
+		{
+			color:#fff;
+		}
+		.big-bar .cat2 .span12 li a
+		{
+			color:#0081C2;
+		}
+		 .big-bar .span12 ul.nav-stacked li b.caret
+		  {
+			vertical-align: middle;
+			border-top: 4px solid #3590EA;
+			margin-left: 4px;
+		}
+		.big-bar .span12 .nav-pills
+		{
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+		
+/*** user_manager ***/
+	#user_manager td {
+		font-size: 12px;
+		font-family: Segoe UI;
+	}
+
+ /********************************************************************************************************************************/
+
+ /****   Masonry   ****/
+/**** Transitions ****/
+
+.masonry,
+.masonry .masonry-brick {
+  -webkit-transition-duration: 0.7s;
+     -moz-transition-duration: 0.7s;
+       -o-transition-duration: 0.7s;
+          transition-duration: 0.7s;
+}
+
+.masonry {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.masonry .masonry-brick {
+  -webkit-transition-property: left, right, top;
+     -moz-transition-property: left, right, top;
+       -o-transition-property: left, right, top;
+          transition-property: left, right, top;
+}
+
+/**** End Transitions ****/
+
+/****** font-face section ******/
+
+@font-face { font-family: "Myriad";	src: url("../fonts/MyriadBold.ttf"); }
+
+@font-face { font-family: 'nevis'; src: url('../fonts/nevis.ttf'); }
+@font-face { font-family: 'Bebas'; src: url('../fonts/bebas___.ttf'); }
+
+@font-face { font-family: 'Gotham Bold'; src: url('../fonts/Gotham_Fonts/Gotham/Gotham-Bold.otf'); }
+@font-face { font-family: 'Gotham Book'; src: url('../fonts/Gotham_Fonts/Gotham/Gotham-Book.otf'); }
+@font-face { font-family: 'Gotham Light'; src: url('../fonts/Gotham_Fonts/Gotham/Gotham-Light.otf'); }
+@font-face { font-family: 'Gotham Medium'; src: url('../fonts/Gotham_Fonts/Gotham/Gotham-Medium.otf'); }
+
+@font-face { font-family: 'Century Gothic'; src: url('../fonts/Gothic_Fonts/Century_Gothic/GOTHIC.TTF'); }
+@font-face { font-family: 'Century Gothic'; font-weight: bold; src: url('../fonts/Gothic_Fonts/Century_Gothic/GOTHICB.TTF'); }
+
+@font-face { font-family: 'Champagne&Limousines'; src: url('../fonts/champagne_limousines/Champagne & Limousines.ttf'); }
+
+@font-face { font-family: 'ScalaSans'; src: url('../fonts/ScalaSans/ScalaSans.otf'); }
+@font-face { font-family: 'ScalaSans Light'; src: url('../fonts/ScalaSans/ScalaSansLight.otf'); }
+@font-face { font-family: 'ScalaSans Bold'; src: url('../fonts/ScalaSans/ScalaSans-Bold.otf'); }
+
+@font-face { font-family: 'Segoe UI'; src: url('../fonts/Segeo_UI/segoeui_0.ttf'); }
+@font-face { font-family: 'Segoe UI Bold'; src: url('../fonts/Segeo_UI/segoeuib_0.ttf'); }
+@font-face { font-family: 'Segoe UI Light'; src: url('../fonts/Segeo_UI/segoeuil.ttf'); }
+@font-face { font-family: 'Segoe UI Semibold'; src: url('../fonts/Segeo_UI/seguisb.ttf'); }
+
+
+@font-face {
+	font-family: 'Folks Light';
+	src: url('../fonts/Folks_Light/regular.eot');
+	src: url('../fonts/Folks_Light/regular.eot?') format('embedded-opentype'),
+	     url('../fonts/Folks_Light/regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Folks Light';
+	font-weight: bold;
+    src: url('../fonts/Folks_Light/bold.eot');
+	src: url('../fonts/Folks_Light/bold.eot?') format('embedded-opentype'),
+	     url('../fonts/Folks_Light/bold.ttf') format('truetype');
+}
+
+/*****flexislider*****/
