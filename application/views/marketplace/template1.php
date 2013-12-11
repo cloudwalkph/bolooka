@@ -161,7 +161,9 @@
 			<div id="m_nav" class="row-fluid">
 				
 				<ul class="nav nav-pills big-bar offset4">
-
+<?php
+	if(isset($craft_categs)) {
+?>
 					<li class="dropdown">
 						<a id="craft" class="mktmnu dropdown-toggle get_prod_btn" style="cursor: pointer;"> Crafts </a>
 	<?php
@@ -190,6 +192,10 @@
 					<li class="disabled hidden-phone">
 						<a>&#9679;</a>
 					</li>
+<?php
+	}
+	if(isset($food_categs)) {
+?>
 					<li class="dropdown">
 						<a id="food" class="mktmnu dropdown-toggle get_prod_btn" style="cursor: pointer;"> Food </a>
 	<?php
@@ -218,6 +224,10 @@
 					<li class="disabled hidden-phone">
 						<a>&#9679;</a>
 					</li>
+<?php
+	}
+	if(isset($furniture_categs)) {
+?>
 					<li class="dropdown">
 						<a id="furniture" class="mktmnu dropdown-toggle get_prod_btn" style="cursor: pointer;"> Furniture </a>
 	<?php
@@ -246,6 +256,9 @@
 					<li class="disabled hidden-phone">
 						<a>&#9679;</a>
 					</li>
+<?php
+	}
+?>
 					<!--
 					<li>
 						<a id="hot" class="mktmnu" style="cursor: pointer;"> Hot </a>
@@ -329,7 +342,7 @@ $(function(){
 		{
 			$(window).unbind('scroll');
 			var items = document.getElementsByClassName('item'),
-				dataString = { 'type': 'products', 'items': <?php echo $items; ?>, 'lastitem': sessionStorage.lastitem, 'category': sessionStorage.category, 'section': sessionStorage.section, 'searchprod': sessionStorage.searchvalue };
+				dataString = { 'market_id': <?php echo isset($resultShop['id']) ? $resultShop['id'] : 0; ?>, 'type': 'products', 'items': <?php echo $items; ?>, 'lastitem': sessionStorage.lastitem, 'category': sessionStorage.category, 'section': sessionStorage.section, 'searchprod': sessionStorage.searchvalue };
 			$.ajax({
 				url: '<?php echo base_url(); ?>shop/getmore',
 				type: 'get',

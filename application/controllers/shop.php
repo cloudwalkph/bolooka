@@ -21,7 +21,11 @@ class Shop extends CI_Controller {
 	function getProds() {
 		$shop['market_id'] = $this->input->get_post('market_id');
 		$items = $this->input->get_post('items');
-		$shop['section'] = $this->input->get_post('section');
+		if($this->input->get_post('section') != 'all') {
+			$shop['section'] = $this->input->get_post('section');
+		} else {
+			$shop['section'] = null;
+		}
 		$category = html_entity_decode($this->input->get_post('category'));
 		$searchprod = html_entity_decode($this->input->get_post('searchprod'));
 		$this->load->model('marketplace_model');
@@ -45,7 +49,11 @@ class Shop extends CI_Controller {
 			$data['type'] = $this->input->get_post('type');
 			$data['items'] = $this->input->get_post('items');
 			$data['lastitem'] = $this->input->get_post('lastitem');
-			$data['section'] = $this->input->get_post('section');
+			if($this->input->get_post('section') != 'all') {
+				$data['section'] = $this->input->get_post('section');
+			} else {
+				$data['section'] = null;
+			}
 			$data['category'] = html_entity_decode($this->input->get_post('category'));
 			$data['searchprod'] = html_entity_decode($this->input->get_post('searchprod'));
 		

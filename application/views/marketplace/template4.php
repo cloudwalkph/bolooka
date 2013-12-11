@@ -1,26 +1,49 @@
-<?php echo $this->load->view('signtop'); ?>
+<?php
+	echo $this->load->view('signtop');
+?>
 <style>
-.header_gradient {
-background: rgb(166,108,108);
-background: -moz-linear-gradient(top,  rgba(166,108,108,1) 20%, rgba(109,3,3,1) 70%, rgba(159,4,4,1) 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(20%,rgba(166,108,108,1)), color-stop(70%,rgba(109,3,3,1)), color-stop(100%,rgba(159,4,4,1)));
-background: -webkit-linear-gradient(top,  rgba(166,108,108,1) 20%,rgba(109,3,3,1) 70%,rgba(159,4,4,1) 100%);
-background: -o-linear-gradient(top,  rgba(166,108,108,1) 20%,rgba(109,3,3,1) 70%,rgba(159,4,4,1) 100%);
-background: -ms-linear-gradient(top,  rgba(166,108,108,1) 20%,rgba(109,3,3,1) 70%,rgba(159,4,4,1) 100%);
-background: linear-gradient(to bottom,  rgba(166,108,108,1) 20%,rgba(109,3,3,1) 70%,rgba(159,4,4,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a66c6c', endColorstr='#9f0404',GradientType=0 );
-
+#m_nav {
+	background: #003591;
 }
-.footer_gradient {
-background: rgb(132,165,122);
-background: -moz-linear-gradient(top,  rgba(132,165,122,1) 20%, rgba(15,59,2,1) 60%, rgba(26,75,11,1) 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(20%,rgba(132,165,122,1)), color-stop(60%,rgba(15,59,2,1)), color-stop(100%,rgba(26,75,11,1)));
-background: -webkit-linear-gradient(top,  rgba(132,165,122,1) 20%,rgba(15,59,2,1) 60%,rgba(26,75,11,1) 100%);
-background: -o-linear-gradient(top,  rgba(132,165,122,1) 20%,rgba(15,59,2,1) 60%,rgba(26,75,11,1) 100%);
-background: -ms-linear-gradient(top,  rgba(132,165,122,1) 20%,rgba(15,59,2,1) 60%,rgba(26,75,11,1) 100%);
-background: linear-gradient(to bottom,  rgba(132,165,122,1) 20%,rgba(15,59,2,1) 60%,rgba(26,75,11,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#84a57a', endColorstr='#1a4b0b',GradientType=0 );
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+	color: #FFFFFF;
+}
+.navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+	background-color: #0da9d6;
+}
+.navbar-inverse .nav li.dropdown.open > .dropdown-toggle, .navbar-inverse .nav li.dropdown.active > .dropdown-toggle, .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
+	background-color: #0da9d6;
+}
 
+/* bootstrap mod to show menu on hover instead of click */
+.dropdown-menu .sub-menu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+  visibility: hidden;
+}
+.dropdown-menu li:hover .sub-menu {
+  visibility: visible;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+/* reduce margin to eliminate the chance of the menu going away as you are relying on :hover */
+.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
+  margin-top: 0;
+}
+.categs.dropdown-menu > li > a:hover, .categs.dropdown-menu > li > a:focus, .categs.dropdown-submenu:hover > a, .categs.dropdown-submenu:focus > a {
+	background-color: #f89406;
+	background-image: none;
+}
+.categs.dropdown-menu > .active > a, .categs.dropdown-menu > .active > a:hover, .categs.dropdown-menu > .active > a:focus {
+	background-color: #faa732;
+	background-image: -moz-linear-gradient(top,#fbb450,#f89406);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#fbb450),to(#f89406));
+	background-image: -webkit-linear-gradient(top,#fbb450,#f89406);
+	background-image: -o-linear-gradient(top,#fbb450,#f89406);
+	background-image: linear-gradient(to bottom,#fbb450,#f89406);
 }
 .p_cont {
     margin: 0 auto;
@@ -33,120 +56,220 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#84a57a', end
 	     -o-transition: opacity 1s ease 0s;
 	        transition: opacity 1s ease 0s;
 }
+
+
+/* -----------------------RESPONSIVE MARKETPLACE----------------------------  */
+@media (max-width: 769px) {
+	body {
+		margin: 0 -20px;
+	}
+}
+/* */
 </style>
 	<div id="wrap">
 
-		<div id="market-head">
-			<div class="row-fluid navbar">
-				<div class="header_top">
-				  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				  </a>
-				<div style="position: relative; z-index: 1; top: 15px;">
-					<a href="<?php echo isset($resultShop['url']) ? base_url($resultShop['url']) : ''; ?>" style="height: 50px; width: 121px;">
-						<img style="max-height: 78px; max-width: 208px;" class="brand" src="<?php echo base_url() . (isset($resultShop['logo']) ? 'uploads/'.str_replace('uploads/', '', $resultShop['logo']) : 'img/homepage/logo.png'); ?>" onerror="this.src='http://www.placehold.it/192x192/333333/ffffff&text=no+image'"/>
+	<div id="market-head" class="navbar">
+		  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </a>
+		<div class="row-fluid">
+			<div class="header_top">
+				<div class="span2">
+					<a href="<?php echo base_url('home'); ?>" style="">
+						<img style="max-width: 171px" src="<?php echo base_url() . (isset($resultShop['logo']) ? 'uploads/'.str_replace('uploads/', '', $resultShop['logo']) : 'img/homepage/logo.png'); ?>" onerror="this.src='http://www.placehold.it/192x192/333333/ffffff&text=no+image'"/>
 					</a>
 				</div>
 				
-					<div class="span9">
-							<div class="row-fluid nav-hold nav-collapse collapse" style="padding-top: 5px;">
-								<ul id="m_sg" class="nav menu-top">
-
-	<?php
-							$logged = $this->session->userdata('logged_in');
-							if(!$logged):
-	?>
+				<div class="pull-right">
+<?php
+				if(current_url() != base_url().'home')
+				{
+?>
+					<div>
+						<ul class="inline">
+							<li class="fb_bg fb_button_log" style="font-family: 'lucida grande',tahoma,verdana,arial,sans-serif; color: rgb(255, 255, 255); cursor: pointer;">
+								<span style="font-weight: 600; padding: 0px 6px; border-right: 1px solid rgb(94, 114, 157); font-size: 24px; vertical-align: text-top;"> f </span>
+								<span style="text-shadow: -1px -1px 0px rgb(86, 105, 145); font-weight: 600; padding: 7px 5px; border-left: 1px solid rgb(133, 152, 192); font-size: 12px; vertical-align: text-top;">Sign in <span class="hidden-phone">with Facebook</span></span>
+							</li>
+						<?php /*
+							<li class="btn-group fb_sign_up_button">
+								<button class="btn btn-mini btn-inverse dropdown-toggle" data-toggle="dropdown" style="padding: 5px;">
+									<span style="font-size: 20px; vertical-align: middle;"> &#9660; </span>
+								</button>
+								<ul class="dropdown-menu pull-right social_log_in_border">
+								<!-- dropdown menu links -->
+									<li><?php $this->load->file('api/Yahoo_Oauth_YOS/index.php'); ?></li>
+									<li><?php $this->load->file('api/google-api-php-client/examples/userinfo/index.php'); ?></li>
+									<li style="cursor: pointer;"><?php $this->load->file('api/liveservices-LiveSDK-2b505a1/Samples/PHP/OauthSample/default.html'); ?></li>
+								</ul>
+							</li>
+							*/ ?>
+						</ul>
+					</div>
+<?php
+				}
+?>
+				</div>
+			
+				<div class="span7">
+					<div>
+						<div class="row-fluid nav-hold nav-collapse collapse" style="margin-left: 30px;">
+							<ul id="m_sg" class="nav menu-top">
+								<li><a href="<?php echo base_url('home'); ?>" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Home</a></li>
+<?php
+						$logged = $this->session->userdata('logged_in');
+						if(!$logged):
+?>
 								<li><a data-toggle="collapse" data-parent="#signtop" href="#collapseThree" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Register</a></li>
+<?php
+						endif;
+?>
+								<li><a href="<?php echo base_url('blog'); ?>" target="_blank" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"> Blog </a></li>
+<?php
+						if(!$logged):
+?>
 								<li><a data-toggle="collapse" data-parent="#signtop" href="#collapseTwo" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Sign In</a></li>
-	<?php
-							else:
-	?>
+<?php
+						endif;
+?>
+<?php
+						
+						if($logged):
+?>
 								<li><a href="<?php echo base_url() ?>dashboard" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Dashboard</a></li>
 								<li><a href="<?php echo base_url() ?>logout?url=<?php echo current_url() ?>" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Log-out</a></li>
-	<?php
-							endif;
-	?>									
-									<li><a class="thelast" href="#contact">Help</a></li>
-								</ul>
-							</div>
-							<form class="form-inline" method="post" onsubmit="return false;">
-								<div class="btn-group input-append">
-									<input class="search-input search_text input-xlarge" id="appendedInputButton" type="text" placeholder="I'm looking for...">
-									<button class="btn s-btn-2 search_but btn-warning get_prod_btn" id="click-search">SEARCH</button>
-								</div>
-								<div class="btn-group">
-									<button type="button" class="btn ces_but">CREATE YOUR E-STORE</button>
-								</div>
-							</form>
-					</div><!--/.nav-collapse -->
-
-				</div>
-			</div>
-			
-			<!-- Navigation Bar -->
-				<div id="m_nav" class="row-fluid navbar navbar-inverse header_gradient">
-					
-					<ul class="nav nav-pills big-bar offset4">
-						<li class="active">
-							<a id="prods" class="mktmnu get_prod_btn" style="cursor: pointer;">Products</a>
-						</li>								
-						<li class="disabled">
-							<a>&#9679;</a>
-						</li>
 <?php
-	if(isset($categories)) {
+						endif;
+?>									
+								<li class="hide"><a class="thelast" href="#contact">Help</a></li>
+							</ul>
+						</div>
+						
+						<form class="form-inline" method="post" onsubmit="return false;">
+							<div class="row-fluid">
+								<div class="span8 btn-group pull-left text-right" style="margin-bottom: 10px">
+									<div class="row-fluid input-append">
+
+										<input class="span9 search-input search_text" id="appendedInputButton" type="text" placeholder="I'm looking for...">
+										<button class="btn s-btn-2 search_but btn-warning get_prod_btn" id="click-search">SEARCH</button>
+
+									</div>
+								</div>
+								<div class="span4 btn-group pull-right text-right">
+									<div>
+										<button type="button" class="btn ces_but">CREATE YOUR E-STORE</button>
+									</div>
+								</div>
+							</div>
+						</form>
+							
+					</div>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+		
+		<!-- Navigation Bar -->
+			<div id="m_nav" class="row-fluid navbar-inverse">
+				
+				<ul class="nav nav-pills big-bar offset4">
+<?php
+	if(isset($all_categs)) {
 ?>
-						<li class="dropdown">
-							<a id="categs" class="dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;">Categories <b class="caret"></b> </a>
-		<?php
-									if($categories->num_rows() > 0)
+					<li class="dropdown">
+						<a id="all" class="mktmnu dropdown-toggle get_prod_btn" style="cursor: pointer;"> All </a>
+	<?php
+							if($all_categs->num_rows() > 0)
+							{
+								echo '<ul class="categs dropdown-menu" role="menu" aria-labelledby="dLabel">';
+								$half   = floor($all_categs->num_rows()/2);
+								$count  = 0;
+								foreach($all_categs->result_array() as $resultCateg)
+								{
+									if($resultCateg['category'] != null)
 									{
-										echo '<ul class="categs dropdown-menu">';
-										foreach($categories->result_array() as $resultCateg)
+										if(isset($resultCateg['disabled']) == 1)
+										{}
+										else
 										{
-											if($resultCateg['category'] != null)
-											{
-												if(isset($resultCateg['disabled']) == null || $resultCateg['disabled'] == 0) {
-													echo '
-													<li class="categ"><a tabindex="-1" style="cursor: pointer;" title="'.$resultCateg['category'].'"> '.ucfirst($resultCateg['category']).' </a></li>
-													';
-												}
-											}
+											echo '<li class="categ"><a tabindex="-1" style="cursor: pointer;" title="'.$resultCateg['category'].'">'.ucfirst($resultCateg['category']).'</a></li>
+											';
 										}
-										echo '</ul>';
 									}
-		?>
-						</li>
-						<li class="disabled">
-							<a>&#9679;</a>
-						</li>
+								}
+								echo '</ul>';
+							}
+	?>
+					</li>
+					<li class="disabled hidden-phone">
+						<a>&#9679;</a>
+					</li>
 <?php
 	}
 ?>
-						<li>
-							<a id="latest_website" class="mktmnu" style="cursor: pointer;">Websites</a>
-						</li>	
-					</ul>
-				</div>
-			<!-- End Navigation Bar -->
-		</div>
-		
-		<!-- body -->
-		<div id="shop-container" style='padding-top: 20px;'>
-			<div class = "content-wrapper">
-				<div class = "shop-body">
-					<ul id="p_cont" class="p_cont" style="margin: 0px auto; padding-bottom: 50px;">
-			<?php 
+					<!--
+					<li>
+						<a id="hot" class="mktmnu" style="cursor: pointer;"> Hot </a>
+					</li>
+					<li class="disabled">
+						<a>&#9679;</a>
+					</li>
+					-->
+					<li>
+						<a id="latest_website" class="mktmnu" style="cursor: pointer;"> Latest Websites </a>
+					</li>	
+				</ul>
+			</div>
+		<!-- End Navigation Bar -->
+	</div>
+	
+	<!-- body -->
+	<div id="shop-container" style='padding-top: 20px;'>
+		<div class = "content-wrapper">
+			<div class = "shop_body">
+				<ul id="p_cont" class="p_cont" style="">
+<?php 
 				echo $content;
-			?>
-					<nav id="page-nav"><a id="nav" href="shop/getmoreprods/2"></a></nav>
-					</ul>
+?>
+				</ul>
+				<div class="text-center navigation hide">
+					<a class="btn first" href="<?php echo base_url().'shop/getmore?type=products&section='.$section.'&item='.$lastitem; ?>">Next</a>
 				</div>
+
 			</div>
 		</div>
-		<!-- End of Body -->
+	</div>
+<!--
+		<div class="hide footer-grad" id="footer" style="background-color: rgb(0, 0, 0); height: 46px; position: relative;">
+			<div style="position: absolute; height: 91px; width: 93px; left: 2px; border-radius: 10px 10px 0px 0px; background: none repeat scroll 0px 0px rgb(238, 238, 238); border: 1px solid rgb(127, 124, 124); bottom: 0px; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75); display: block;" id="back-top">
+				<a style="font-weight: bold; width: 55px; display: block; margin: 25% auto; cursor: pointer; font-size: 16px;">Scroll To Top</a>
+			</div>
+			<div style="left: 0px; right: 0px; margin: auto; top: 0px; bottom: 0px; text-align: center; position: absolute; height: 18px;">
+				<span id="nomore" style="font-weight: 600; color: rgb(255, 255, 255); font-size: 16px; text-transform: uppercase;"></span>
+			</div>
+		</div>
+-->
+	<!-- MODAL -->
+	<div id="myModal_alert_error" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-body" style="background-color: #e34e0d;color: #fff;">
+			<p class="error_word" style="font-family: 'Segoe UI Semibold';"></p>
+			<div class="pull-right">
+				<button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Close</button>
+			</div>
+		</div>
+	</div>	
+	<!--Sign up form modal-->
+	<div id="myModal_registration" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" style="background: #383838;width: 290px;left:60%;">
+		<div class="modal-header title_message">
+			<h3 id="myModalLabel" style="color: #ddd;font-family: 'ScalaSans Light';">Welcome to Bolooka!</h3>
+		</div>
+		<div class="modal-body">
+			<p style="color: #ddd;font-family: 'ScalaSans Light';">Please complete remaining fields</p>
+			<?php echo $this->load->view('homepage/sign_up_form'); ?>
+		</div>
+	</div>
+	<!-- End of Body -->
 
 	</div>
 <script>
@@ -160,7 +283,6 @@ $(function(){
 	sessionStorage.removeItem('category');
 	sessionStorage.removeItem('section');
 	sessionStorage.lastitem = 2;
-	// sessionStorage.section = 'craft';
 		  
 	window.getNewElements = function getNewElements(e) {
 		tempSection = sessionStorage.section;
@@ -168,7 +290,7 @@ $(function(){
 		{
 			$(window).unbind('scroll');
 			var items = document.getElementsByClassName('item'),
-				dataString = { 'market_id': <?php echo $market_id; ?>, 'type': 'products', 'items': <?php echo $items; ?>, 'lastitem': sessionStorage.lastitem, 'category': sessionStorage.category, 'section': sessionStorage.section, 'searchprod': sessionStorage.searchvalue };
+				dataString = { 'market_id': <?php echo isset($resultShop['id']) ? $resultShop['id'] : 0; ?>, 'type': 'products', 'items': <?php echo $items; ?>, 'lastitem': sessionStorage.lastitem, 'category': sessionStorage.category, 'section': sessionStorage.section, 'searchprod': sessionStorage.searchvalue };
 			$.ajax({
 				url: '<?php echo base_url(); ?>shop/getmore',
 				type: 'get',
@@ -182,13 +304,13 @@ $(function(){
 						if(tempSection == sessionStorage.section) {
 							var $newElems = $( newElements );	// hide new items while they are loading
 							$newElems.hide().imagesLoaded(function() {	// ensure that images load before adding to masonry layout
-								sessionStorage.lastitem = Number(sessionStorage.lastitem) + 1;
 								$container
 									.append( $newElems )
 									.masonry( 'appended', $newElems, true ).show()
 								$('.nomore').empty();
-								$(window).bind('scroll', getNewElements);
 							}).show();
+							sessionStorage.lastitem = Number(sessionStorage.lastitem) + 1;
+							$(window).bind('scroll', getNewElements);
 						}
 					} else {
 						$('.nomore').html('<em>Last Item Reached.</em>').slideUp(2000);
@@ -216,10 +338,8 @@ $(function(){
 		mydata.items = '<?php echo $items; ?>';
 		if(id == 'click-search') {
 			mydata.searchprod = sessionStorage.searchvalue;
-		} else if(id == 'furniture') {
-			mydata.section = 'furniture';
-		} else if(id == 'craft') {
-			mydata.section = 'craft';
+		} else {
+			mydata.section = id;
 		}
 
 		$.ajax({
@@ -262,18 +382,14 @@ $(function(){
 		sessionStorage.removeItem('category');
 		sessionStorage.lastitem = 2;
 		
+		$('li.active').removeClass('active');
+
 		if(id == 'click-search') {
 			sessionStorage.removeItem('section');
 			var text = $('.search_text').val();
 			sessionStorage.searchvalue = text;
-		} else if(id == 'furniture') {
-			sessionStorage.section = 'furniture';
-			$('li.active').removeClass('active');
-			$(e.target).addClass('active');
-			$(e.target).parents('li').addClass('active');
-		} else if(id == 'craft') {
-			sessionStorage.section = 'craft';
-			$('li.active').removeClass('active');
+		} else {
+			sessionStorage.section = id;
 			$(e.target).addClass('active');
 			$(e.target).parents('li').addClass('active');
 		}
@@ -298,7 +414,7 @@ $(function(){
 			},
 			type: "get",
 			url: "<?php echo base_url(); ?>shop/getProds",
-			data: { 'market_id': <?php echo $market_id; ?>, 'items': <?php echo $items; ?>, 'category': category, 'section': sessionStorage.section },
+			data: { 'market_id': <?php echo isset($resultShop['id']) ? $resultShop['id'] : 0; ?>, 'items': <?php echo $items; ?>, 'category': category, 'section': sessionStorage.section },
 			success: function(newElements) {
 				var $newElems = $( newElements );
 				$newElems.imagesLoaded( function() { // apply width to container manually
@@ -327,7 +443,7 @@ $(function(){
 			},
 			url: '<?php echo base_url(); ?>shop/getWebsites',
 			type: 'post',
-			data: { 'market_id': <?php echo $market_id; ?>, 'items': <?php echo $items; ?> },
+			data: { 'market_id': <?php echo isset($resultShop['id']) ? $resultShop['id'] : 0; ?>, 'items': <?php echo $items; ?> },
 			success: function(newElements) {
 				var $newElems = $( newElements );
 				$newElems.imagesLoaded( function() { // apply width to container manually

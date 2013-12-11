@@ -39,6 +39,19 @@ CREATE TABLE IF NOT EXISTS `product_inquiry` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 		');
+		// create table product variants
+		$this->db->query('
+			CREATE TABLE IF NOT EXISTS `product_variants` (
+			`id` int(11) NOT NULL AUTO_INCREMENT,
+			`product_id` int(11) NOT NULL,
+			`website_id` int(11) NOT NULL,
+			`type` varchar(255) DEFAULT NULL,
+			`name` varchar(255) DEFAULT NULL,
+			`price` int(11) NOT NULL,
+			`quantity` int(11) NOT NULL,
+			PRIMARY KEY (`id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+		');
 		if(isset($_GET['bolookas']))
 		{
 			$this->administrator();
@@ -298,40 +311,9 @@ CREATE TABLE IF NOT EXISTS `product_inquiry` (
 			$this->load->model('marketplace_model');
 			
 			$qmarket = $this->marketplace_model->getMarket($web);
-			$rmarket = $qmarket->row_array();
-			$shop['resultShop'] = $rmarket;
+			$rmarketRow = $qmarket->row_array();
 
-			extract($rmarket);
-			
-			if($qmarket->num_rows() > 0) {
-				$shop['market_id'] = $id;
-				$shop['items'] = 24;
-				if($this->db->field_exists('product_seq', 'products')) {
-					$shop['products'] = $this->marketplace_model->getMarketProducts($id, $shop['items'], null, null, null, null, 'products.date_modified desc, products.product_seq');
-				} else {
-					$shop['products'] = $this->marketplace_model->getMarketProducts($id, $shop['items'], null, null, null, null, 'products.date_modified desc, products.order');
-				}
-				$shop['categories'] = $this->marketplace_model->getProductCategories($id);
-				// $shop['websites'] = $this->marketplace_model->getWebMarket($id);
-				
-				$data['page']='marketplace';
-				$shop['action'] = 'view';
-
-				$shop['content'] = $this->load->view('marketplace/content', $shop, true);
-				
-				if(isset($template)) {
-					$data['body'] = $this->load->view('marketplace/template'.$template, $shop, TRUE);
-				} else {
-					$data['body'] = $this->load->view('marketplace/template', $shop, TRUE);
-				}
-				
-				$data['footer'] = $this->load->view('marketplace/footer', $shop, TRUE);
-
-			} else {
-				show_404();
-			}
-
-			$this->load->view('homepage', $data);
+			$this->marketplace($rmarketRow['id'], $rmarketRow);
 		}
 	}
 	
@@ -717,23 +699,33 @@ CREATE TABLE IF NOT EXISTS `product_inquiry` (
 		$this->load->file('api/pinterest-d585d.html');
 	}
 	
-	function marketplace($market_id = 0) {
+	function marketplace($market_id = 0, $resultShop = null) {
+		$shop['resultShop'] = $resultShop;
 		if($this->input->get('t'))
 		{
 			$template = $this->input->get('t');
 		} else {
-			$template = 'template1';
+			if($resultShop['template'] == null) {
+				$template = '1';
+			} else {
+				$template = $resultShop['template'];
+			}
 		}
 
 		$shop['market_id'] = $market_id;
-		$shop['section'] = 'crafts';
+		$shop['section'] = null;
 		$shop['items'] = 30;
 		$shop['lastitem'] = 2;
 		if($this->db->field_exists('product_seq', 'products')) {
 			$shop['products'] = $this->marketplace_model->getMarketplaceProducts($market_id, $shop['items'], 0, $shop['section'], null, null, 'products.product_seq');
 		} else {
-			$shop['products'] = $this->marketplace_model->getMarketplaceProducts($market_id, $shop['items'], 0, $shop['section'], null, null, 'products.order');
+			if($market_id == 0) {
+				$shop['products'] = $this->marketplace_model->getMarketplaceProducts($market_id, $shop['items'], 0, $shop['section'], null, null, 'products.order');
+			} else {
+				$shop['products'] = $this->marketplace_model->getMarketProducts($market_id, $shop['items'], 0, $shop['section'], null, null, 'products.order');
+			}
 		}
+		$shop['all_categs'] = $this->marketplace_model->getProductCategories($market_id);
 		$shop['craft_categs'] = $this->marketplace_model->getProductCategories($market_id, 'crafts');
 		$shop['food_categs'] = $this->marketplace_model->getProductCategories($market_id, 'food');
 		$shop['furniture_categs'] = $this->marketplace_model->getProductCategories($market_id, 'furniture');
@@ -745,23 +737,8 @@ CREATE TABLE IF NOT EXISTS `product_inquiry` (
 		
 		$data['page'] = 'marketplace';
 		$data['header'] = '';
-		$data['body'] = $this->load->view('marketplace/'.$template, $shop, true);
+		$data['body'] = $this->load->view('marketplace/template'.$template, $shop, true);
 		$data['footer'] = $this->load->view('marketplace/footer', $shop, true);
-		
-		// create table product variants
-		$this->db->query('
-			CREATE TABLE IF NOT EXISTS `product_variants` (
-			`id` int(11) NOT NULL AUTO_INCREMENT,
-			`product_id` int(11) NOT NULL,
-			`website_id` int(11) NOT NULL,
-			`type` varchar(255) DEFAULT NULL,
-			`name` varchar(255) DEFAULT NULL,
-			`price` int(11) NOT NULL,
-			`quantity` int(11) NOT NULL,
-			PRIMARY KEY (`id`)
-			) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-		');
-		
 		
 		$this->load->view('homepage', $data);
 
