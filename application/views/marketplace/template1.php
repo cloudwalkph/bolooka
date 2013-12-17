@@ -71,35 +71,10 @@
 				
 				<div class="pull-right">
 <?php
-				if(current_url() != base_url().'home')
-				{
-?>
-					<div>
-						<ul class="inline">
-							<li class="fb_bg fb_button_log" style="font-family: 'lucida grande',tahoma,verdana,arial,sans-serif; color: rgb(255, 255, 255); cursor: pointer;">
-								<span style="font-weight: 600; padding: 0px 6px; border-right: 1px solid rgb(94, 114, 157); font-size: 24px; vertical-align: text-top;"> f </span>
-								<span style="text-shadow: -1px -1px 0px rgb(86, 105, 145); font-weight: 600; padding: 7px 5px; border-left: 1px solid rgb(133, 152, 192); font-size: 12px; vertical-align: text-top;">Sign in <span class="hidden-phone">with Facebook</span></span>
-							</li>
-						<?php /*
-							<li class="btn-group fb_sign_up_button">
-								<button class="btn btn-mini btn-inverse dropdown-toggle" data-toggle="dropdown" style="padding: 5px;">
-									<span style="font-size: 20px; vertical-align: middle;"> &#9660; </span>
-								</button>
-								<ul class="dropdown-menu pull-right social_log_in_border">
-								<!-- dropdown menu links -->
-									<li><?php $this->load->file('api/Yahoo_Oauth_YOS/index.php'); ?></li>
-									<li><?php $this->load->file('api/google-api-php-client/examples/userinfo/index.php'); ?></li>
-									<li style="cursor: pointer;"><?php $this->load->file('api/liveservices-LiveSDK-2b505a1/Samples/PHP/OauthSample/default.html'); ?></li>
-								</ul>
-							</li>
-							*/ ?>
-						</ul>
-					</div>
-<?php
-				}
+					echo isset($social_login) ? $social_login : '';
 ?>
 				</div>
-			
+
 				<div class="span7">
 					<div>
 						<div class="row-fluid nav-hold nav-collapse collapse" style="margin-left: 30px;">
@@ -324,6 +299,95 @@
 
 	</div>
 <script>
+		window.fbAsyncInit = function() {
+		  FB.init({
+			appId      : '203727729715737', // App ID
+			// channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
+			status     : false, // check login status
+			cookie     : true, // enable cookies to allow the server to access the session
+			xfbml      : true  // parse XFBML
+		  });
+		  
+			// listen for and handle auth.statusChange events
+			FB.Event.subscribe('auth.statusChange', function(response) {
+				if (response.authResponse) {
+					// user has auth'd your app and is logged into Facebook
+					FB.api('/me', function(me) {
+						
+					});
+				} else {
+					/* user has not auth'd your app, or is not logged into Facebook */
+				}
+			});
+			
+			/* facebook buttom click */
+			$('#fb_login').on('click',function(){
+				FB.login(function(response) {
+					console.dir(response);
+				   if (response.authResponse) {
+					 console.log('Welcome!  Fetching your information.... ');
+					 FB.api('/me', function(me) {
+					   console.log('Good to see you, ' + me.name + '.');
+					   if (me) {
+							$.post("signup/facebook",
+								{
+									'id': me.id,
+									'first_name': me.first_name,
+									'email': me.email,
+									'last_name': me.last_name,
+									'gender': me.gender,
+									'bdays': me.birthday
+								},
+								function(html)
+								{
+									if(html == 'create new account')
+									{
+										$('#social_id').val(me.id);
+										$('#loginType').val('facebook');
+										/* check if email exist */
+										var dataParams = 'email='+me.email;
+										$.ajax({
+											type: "POST",
+											url: '<?php echo base_url(); ?>signup/fbcheckEmail',
+											data: dataParams,
+											success: function(html) {
+												if(html == 'email rejected')
+												{
+													$('#social_email').val('');
+													$('#social_first').val(me.first_name);
+													$('#social_last').val(me.last_name);
+													
+												} else {
+													$('#social_email').val(me.email);
+													$('#social_first').val(me.first_name);
+													$('#social_last').val(me.last_name);
+												}
+											}
+										});
+										/* show modal */
+										$('#myModal_social').modal('toggle');
+									}else
+									{
+										window.location = '<?php base_url(); ?>dashboard';
+									}
+									
+								});
+						}
+					 });
+				   } else {
+					 console.log('User cancelled login or did not fully authorize.');
+				   }
+				}, {scope: 'email,user_birthday,publish_stream,offline_access'});
+			});
+		};
+		/* Load the SDK Asynchronously */
+		  (function() {
+			var e = document.createElement('script'); e.async = true;
+			e.src = document.location.protocol +
+			  '//connect.facebook.net/en_US/all.js';
+			document.getElementById('fb-root').appendChild(e);
+		  }());
+
 $(function(){
 
 	var $container = $('.p_cont'),

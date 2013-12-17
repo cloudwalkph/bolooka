@@ -33,7 +33,7 @@ class Shop extends CI_Controller {
 		if($this->db->field_exists('product_seq', 'products')) {
 			$order = 'products.product_seq';
 		} else {
-			$order = 'products.order';
+			$order = 'products.order, date_modified desc';
 		}
 		
 		if($shop['market_id'] == 0) {
@@ -66,7 +66,7 @@ class Shop extends CI_Controller {
 					if($this->db->field_exists('product_seq', 'products')) {
 						$order = 'products.product_seq';
 					} else {
-						$order = 'products.order';
+						$order = 'products.order, date_modified desc';
 					}
 					
 					if($shop['market_id'] == 0) {

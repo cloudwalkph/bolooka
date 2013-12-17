@@ -1126,11 +1126,10 @@ echo '
 				{
 					$primary = base_url('img/bolookalogo.png');
 
-						if($this->db->field_exists('album_cover', 'albums')) {
-							$primary = base_url().'uploads/'.$row1['album_cover'];
-						} else {
-							$primary = base_url().'uploads/'.$row1['primary'];
+						if($this->db->field_exists('primary', 'albums')) {
+							$this->db->query('ALTER TABLE `albums` CHANGE `primary` `album_cover` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;');
 						}
+						$primary = base_url().'uploads/'.$row1['album_cover'];
 
 					$name = $row1['name'];
 					echo '

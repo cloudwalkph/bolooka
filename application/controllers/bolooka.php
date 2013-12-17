@@ -72,11 +72,11 @@ CREATE TABLE IF NOT EXISTS `product_inquiry` (
 	function home()
 	{
 		$data2home = null;
-
 			$data2body['sign_in'] = $this->load->view('homepage/sign_in_form', '', TRUE);
 		
 			$data2body['isHome'] = 'yes';
 			
+			$data2body['social_login'] = $this->load->view('homepage/social_network_login', '', true);
 			$data2home['header'] = $this->load->view('homepage/header', $data2body, TRUE);
 			$data2home['body'] = $this->load->view('homepage/body', $data2body, TRUE);
 			$data2home['footer'] = $this->load->view('homepage/footer', $data2body, TRUE);
@@ -722,7 +722,7 @@ CREATE TABLE IF NOT EXISTS `product_inquiry` (
 			if($market_id == 0) {
 				$shop['products'] = $this->marketplace_model->getMarketplaceProducts($market_id, $shop['items'], 0, $shop['section'], null, null, 'products.order');
 			} else {
-				$shop['products'] = $this->marketplace_model->getMarketProducts($market_id, $shop['items'], 0, $shop['section'], null, null, 'products.order');
+				$shop['products'] = $this->marketplace_model->getMarketProducts($market_id, $shop['items'], 0, $shop['section'], null, null, 'products.order, date_modified desc');
 			}
 		}
 		$shop['all_categs'] = $this->marketplace_model->getProductCategories($market_id);
@@ -737,6 +737,7 @@ CREATE TABLE IF NOT EXISTS `product_inquiry` (
 		
 		$data['page'] = 'marketplace';
 		$data['header'] = '';
+		$shop['social_login'] = $this->load->view('homepage/social_network_login', '', true);
 		$data['body'] = $this->load->view('marketplace/template'.$template, $shop, true);
 		$data['footer'] = $this->load->view('marketplace/footer', $shop, true);
 		

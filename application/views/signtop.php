@@ -18,8 +18,7 @@
 }
 #signin_form {
 	color: white; 
-	text-align: center; 
-	margin: 0 0 4px;
+	text-align: center;
 }
 /* RESPONSIVE */
 @media (max-width: 480px) {  
@@ -59,29 +58,6 @@
 							<input type="text" name="email" id="email" placeholder="Email address" class="email_sign_in span2" style="font-family: 'Segoe UI';"/>
 							<input type="password" name="password" id="password" placeholder="Password" class="password_sign_in span2" style="font-family: 'Segoe UI';" />
 							<button class="btn btn-primary" id="log_in" type="submit">Sign In</button>
-							<br/>
-				<?php
-					if(current_url() != base_url().'home') {
-				?>
-							<div class="fb_bg fb_button_log" style="margin-left: 0;margin-top: 8px;font-family: 'lucida grande',tahoma,verdana,arial,sans-serif; color: rgb(255, 255, 255); cursor: pointer;">
-								<span style="border-right: 1px solid rgb(94, 114, 157); font-weight: 600; vertical-align: middle; font-size: 24px; padding: 0px 6px;"> f </span>
-								<span style="border-left: 1px solid rgb(133, 152, 192); vertical-align: middle; text-shadow: -1px -1px 0px rgb(86, 105, 145); font-size: 11px; font-weight: 600; padding: 6px 5px;">Sign in with Facebook</span>
-							</div>
-							<div class="btn-group fb_sign_up_button" style="margin-left: 3px;max-width:43%">
-								<button class="btn btn-mini btn-inverse dropdown-toggle" data-toggle="dropdown" style="padding: 5px;">
-									<span style="font-size: 20px; vertical-align: middle;"> &#9660; </span>
-								</button>
-								<ul class="dropdown-menu pull-right social_log_in_border" style="top: -118%;left: 118%;text-align: left; max-width: 128px; padding: 0px; border-radius: 0px 0px 0px 0px;">
-								<!-- dropdown menu links -->
-									<li><?php $this->load->file('api/Yahoo_Oauth_YOS/index.php'); ?></li>
-									<li><?php $this->load->file('api/google-api-php-client/examples/userinfo/index.php'); ?></li>
-									<li style="cursor: pointer;"><?php $this->load->file('api/liveservices-LiveSDK-2b505a1/Samples/PHP/OauthSample/default.html'); ?></li>
-								</ul>
-							</div>
-<?php
-					}
-?>
-							&nbsp;&nbsp;&nbsp;
 							<a data-toggle="collapse" data-parent="#signtop" href="#collapseFour" style="color: #08c">Forgot password?</a>
 							<?php if(isset($isHome) != 'yes') { ?>
 							<a data-toggle="collapse" data-parent="#signtop" href="#collapseThree" style="color: #08c">New User?</a>
@@ -109,18 +85,6 @@
 								<div class="offset4 span4">
 									<label class="control-label" style="font-size: 16px; margin-bottom: 0;">Sign up and create a website</label>
 									<a data-toggle="collapse" href="#collapseThree" data-parent="#signtop" style="margin-top: 8px;"><img src="<?php echo base_url('img/close_button.png'); ?>"></a>
-									<!--<div class="btn-group" style="margin-top: 8px;">
-									  <a class="btn dropdown-toggle" data-toggle="dropdown">
-										Sign in with
-										<span class="caret"></span>
-									  </a>
-									  <ul class="dropdown-menu">
-										<li><a tabindex="-1" href="#">Facebook</a></li>
-										<li><a tabindex="-1" href="#">Yahoo</a></li>
-										<li><a tabindex="-1" href="#">Google</a></li>
-										<li><a tabindex="-1" href="#">Msn</a></li>
-									  </ul>
-									</div>-->
 								</div>
 							</div>
 							<div class="row-fluid controls">
@@ -143,22 +107,6 @@
 							<div class="row-fluid">
 								<div class="offset4 span4">
 									<button class="btn btn-small btn-primary span12 signtop_free_button" type="submit" style="margin-top: 8px;">GET FREE E-STORE NOW</button>
-									
-									<div class="fb_bg fb_button_log span6" style="margin-left: 0;margin-top: 8px;font-family: 'lucida grande',tahoma,verdana,arial,sans-serif; color: rgb(255, 255, 255); cursor: pointer;">
-										<span style="border-right: 1px solid rgb(94, 114, 157); font-weight: 600; vertical-align: middle; font-size: 24px; padding: 0px 6px;"> f </span>
-										<span style="border-left: 1px solid rgb(133, 152, 192); vertical-align: middle; text-shadow: -1px -1px 0px rgb(86, 105, 145); font-size: 11px; font-weight: 600; padding: 6px 5px;">Sign up with Facebook</span>
-									</div>
-									<div class="btn-group fb_sign_up_button" style="margin-top: 7px;margin-left: 3px;max-width:43%">
-										<button class="btn btn-mini btn-inverse dropdown-toggle" data-toggle="dropdown" style="padding: 5px;">
-											<span style="font-size: 20px; vertical-align: middle;"> &#9660; </span>
-										</button>
-										<ul class="dropdown-menu pull-right social_log_in_border" style="position: relative;text-align: left; max-width: 128px; padding: 0px; border-radius: 0px 0px 0px 0px;">
-										<!-- dropdown menu links -->
-											<li><?php $this->load->file('api/Yahoo_Oauth_YOS/index.php'); ?></li>
-											<li><?php $this->load->file('api/google-api-php-client/examples/userinfo/index.php'); ?></li>
-											<li style="cursor: pointer;"><?php $this->load->file('api/liveservices-LiveSDK-2b505a1/Samples/PHP/OauthSample/default.html'); ?></li>
-										</ul>
-									</div>
 								</div>
 							</div>
 						<?php
@@ -237,84 +185,8 @@
 			</div>
 		</div>
 	</div>
-<script>
-	/* fb log in */
-	window.fbAsyncInit = function() {
-		FB.init({
-			appId      : '203727729715737', // App ID
-			channelUrl : '<?php echo base_url(); ?>channel.html', // Channel File
-			status     : false, // check login status
-			cookie     : true, // enable cookies to allow the server to access the session
-			xfbml      : true  // parse XFBML
-		});
-		
-		$('.fb_button_log').on('click', function() {
-			FB.login(function(response) {
-				console.dir(response);
-				if (response.authResponse) {
-					FB.api('/me', function(me) {
-						console.log('Good to see you, ' + me.name + '.');
-						if (me) {
-							$.post("signup/facebook",
-							{
-								'id': me.id,
-								'first_name': me.first_name,
-								'email': me.email,
-								'last_name': me.last_name,
-								'gender': me.gender,
-								'bdays': me.birthday
-							},
-							function(html)
-							{
-								if(html == 'create new account')
-								{
-									$('#social_ids').val(me.id);
-									$('#loginTypes').val('facebook');
-									
-									/* check if email exist */
-									var dataParams = 'email='+me.email;
-									$.ajax({
-										type: "POST",
-										url: '<?php echo base_url(); ?>signup/fbcheckEmail',
-										data: dataParams,
-										success: function(html) {
-											if(html == 'email rejected')
-											{
-												$('#social_emails').val('');
-												$('#social_firsts').val(me.first_name);
-												$('#social_lasts').val(me.last_name);
-												
-											} else {
-												$('#social_emails').val(me.email);
-												$('#social_firsts').val(me.first_name);
-												$('#social_lasts').val(me.last_name);
-											}
-										}
-									});
-									/* show modal */
-									$('#myModal_fb').modal('toggle');
-								}else
-								{
-									window.location = '<?php base_url(); ?>dashboard';
-								}
-							});
-						}
-					});
-				}else {
-					console.log('User cancelled login or did not fully authorize.');
-				}
-			}, {scope: 'email,user_birthday,publish_stream,offline_access'});
-		});
-	};
-	/* Load the SDK Asynchronously */
-	(function() {
-		var e = document.createElement('script'); e.async = true;
-		e.src = document.location.protocol +
-		  '//connect.facebook.net/en_US/all.js';
-		document.getElementById('fb-root').appendChild(e);
-	}());
 	
-	
+<script>	
 	/* document ready */
 $(function(){
 	

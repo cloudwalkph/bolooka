@@ -16,17 +16,6 @@
 			if($queryGetProd->num_rows() > 0)
 			{
 				foreach($queryGetProd->result_array() as $wbgrprow) {
-
-					$this->db->where('id', $row['website_id']);
-					$this->db->where('deleted', 0);
-					$queryWebsite = $this->db->get('websites');
-					$row1 = $queryWebsite->row_array();
-					
-					/**** check if product is disabled ****/
-					$this->db->where('product_id', $row['id']);
-					$queryProdMod = $this->db->get('product_moderation');
-					$resultProdMod = $queryProdMod->row_array();
-					/**** end ****/
 					
 						/**** image uploaded script error catcher -- Noel ****/
 							/* check image in uploads folder */
