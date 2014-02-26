@@ -766,20 +766,20 @@ class Test extends CI_Controller {
 		}
 	}
 
-	function comValidation(){
-		$com_name = $this->input->post('comName');
+// 	function comValidation(){
+// 		$com_name = $this->input->post('comName');
 		
-		$query = $this->db->query("SELECT * FROM websites WHERE site_name='$com_name'");
+// 		$query = $this->db->query("SELECT * FROM websites WHERE site_name='$com_name'");
 		
-		if($query->num_rows() > 0)
-		{
-			echo 1;
-		}
-		else
-		{
-			echo 0;
-		}
-	}
+// 		if($query->num_rows() > 0)
+// 		{
+// 			echo 1;
+// 		}
+// 		else
+// 		{
+// 			echo 0;
+// 		}
+// 	}
 	
 	function namecheapapi(){
 		$username = "noel1231";

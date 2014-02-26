@@ -26,6 +26,7 @@ class Bolooka extends CI_Controller {
 	}
 	
 	function index() {
+		$this->auto_random_marketplace();
 		$this->db->query('
 CREATE TABLE IF NOT EXISTS `product_inquiry` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -743,6 +744,35 @@ CREATE TABLE IF NOT EXISTS `product_inquiry` (
 		
 		$this->load->view('homepage', $data);
 
+	}
+	private function auto_random_marketplace() {
+		$getminute = date ( 'i' );
+		if ($getminute == '30' || $getminute == '00') :
+		$this->random_it ();
+		else :
+		// 			echo $getminute;
+		endif;
+	}
+	private function random_it() {
+		$this->db->where ( 'products.marketplace', 1 );
+		$qproducts = $this->db->get ( 'products' );
+		$rproducts = $qproducts->result_array ();
+	
+		$numprods = range ( $min = 0, $qproducts->num_rows () - 1 );
+		shuffle ( $numprods );
+		foreach ( $rproducts as $key => $prods ) {
+			if ($this->db->field_exists ( 'product_seq', 'products' )) {
+				$update_data = array (
+						'product_seq' => $numprods [$key]
+				);
+			} else {
+				$update_data = array (
+						'order' => $numprods [$key]
+				);
+			}
+			$this->db->where ( 'id', $prods ['id'] );
+			$this->db->update ( 'products', $update_data );
+		}
 	}
 }
 

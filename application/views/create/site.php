@@ -510,38 +510,38 @@ $(function(){
 			}
 	});
 	
-    function comCheck(checkCom)
-	{
-		if(checkCom.charAt('0') == ' ')
-		{
-			$('#com_name').val('');
-			return false;
-		}
-		if(checkCom != 0)
-		{
-			var dataString = 'comName=' + checkCom;
-			$.ajax({ 
-				type: "POST",
-				url: "<?php echo base_url(); ?>test/comValidation",
-				data: dataString,
-				success: function (html) {
-					if(html == 1)
-					{
-						$('#com_name').parent().parent('.control-group').removeClass('success').addClass('error');
-						$('#com_name').parent().children('.help-inline').html('Name already exists!');
-					}else if(html == 0)
-					{
-						$('#com_name').parent().parent('.control-group').removeClass('error').addClass('success');
-						$('#com_name').parent().children('.help-inline').html('Available!');
-					}
-				} 
-			});
-		} else {
-			$('#com_name').parent().parent('.control-group').removeClass('success').removeClass('error');
-			$('#com_name').parent().children('.help-inline').html('This cannot be blank');		
-		}
-	}
-	document.getElementById("com_name").addEventListener('input', function() { comCheck(this.value) }, false);
+//	function comCheck(checkCom)
+// 	{
+// 		if(checkCom.charAt('0') == ' ')
+// 		{
+// 			$('#com_name').val('');
+// 			return false;
+// 		}
+// 		if(checkCom != 0)
+// 		{
+// 			var dataString = 'comName=' + checkCom;
+// 			$.ajax({ 
+// 				type: "POST",
+//				url: 'test/comValidation",
+// 				data: dataString,
+// 				success: function (html) {
+// 					if(html == 1)
+// 					{
+// 						$('#com_name').parent().parent('.control-group').removeClass('success').addClass('error');
+// 						$('#com_name').parent().children('.help-inline').html('Name already exists!');
+// 					}else if(html == 0)
+// 					{
+// 						$('#com_name').parent().parent('.control-group').removeClass('error').addClass('success');
+// 						$('#com_name').parent().children('.help-inline').html('Available!');
+// 					}
+// 				} 
+// 			});
+// 		} else {
+// 			$('#com_name').parent().parent('.control-group').removeClass('success').removeClass('error');
+// 			$('#com_name').parent().children('.help-inline').html('This cannot be blank');		
+// 		}
+// 	}
+// 	document.getElementById("com_name").addEventListener('input', function() { comCheck(this.value) }, false);
 	
 	function nameCheck(checkName)
 	{
