@@ -58,7 +58,11 @@ $( "#dialog2<?php echo $pid; ?>" ).dialog( "open" );
 		foreach($query->result_array() as $rows)
 		{
 			$title = $rows['album_name'];
-			$discrip = $rows['discrip'];
+			if($this->db->field_exists('descrip', 'albums')) {
+				$discrip = $rows['descrip'];
+			} else {
+				$discrip = $rows['discrip'];
+			}
 			$created = $rows['created'];
 		}
 		
@@ -75,7 +79,7 @@ $( "#dialog2<?php echo $pid; ?>" ).dialog( "open" );
 ?>
 <input type="hidden" name="albumpart" value="photospart" id="albumpart" class="albumpart" />
 <div id="dialog2<?php echo $pid; ?>" title="Multiple Upload" style="display:none;overflow: hidden;">
-	<iframe src="<?php echo base_url(); ?>multi?albumid=<?php echo $albumId; ?>&pid=<?php echo $pid; ?>" width="460px" frameborder="0" height="300px"></iframe>
+	<iframe src="<?php echo base_url(); ?>multi?albumid=<?php echo $albumId; ?>&pid=<?php echo $pid; ?>" width="460px" height="300px"></iframe>
 </div>
 <div class="pid" id="<?php echo $pid; ?>"></div>
 <div class="wid" id="<?php echo $wid; ?>"></div>

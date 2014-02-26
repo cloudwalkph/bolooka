@@ -23,7 +23,11 @@
 		$i = 0;
 		$thisresult = $qAlbums->row_array();
 		$album_name = $thisresult['album_name'];
-		$discrip = $thisresult['discrip'];
+		if ($this->db->field_exists ( 'descrip', 'albums' )) :
+			$discrip = $thisresult ['descrip'];
+		 else :
+			$discrip = $thisresult ['discrip'];
+		endif;
 ?>
 <div class="row-fluid photo_title">
 	<div class="pull-right" style="margin: 10px;">

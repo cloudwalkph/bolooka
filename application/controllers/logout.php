@@ -11,7 +11,7 @@ class LogOut extends CI_Controller {
 
 	public function index()
 	{
-		$redirect = $_GET['url'];
+		$redirect = $this->input->get('url');
 		$this->session->sess_destroy();
 		// $redirect = $this->input->get('curr_url');
 		// $this->load->model('logout');

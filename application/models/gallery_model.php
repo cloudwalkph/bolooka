@@ -40,19 +40,22 @@
 
 			return $qgallery;
 		}
-		
-		function insertAlbums($web_id = 0, $page_id = 0, $album_name = null, $album_description = null) {
-			$album_data = array(
+	function insertAlbums($web_id = 0, $page_id = 0, $album_name = null, $album_description = null) {
+		$album_data = array (
 				'web_id' => $web_id,
 				'page_id' => $page_id,
 				'album_name' => $album_name,
-				'discrip' => $album_description,
-				'created' => time()
-			);
-			$this->db->insert('albums', $album_data);
-			
-			return $this->db->insert_id();
-		}
+				'created' => time () 
+		);
+		if ($this->db->field_exists ( 'descrip', 'albums' )) :
+			$album_data ['descrip'] = $album_description;
+		 else :
+			$album_data ['discrip'] = $album_description;
+		endif;
+		$this->db->insert ( 'albums', $album_data );
+		
+		return $this->db->insert_id ();
+	}
 		
 		function deleteAlbums() {
 			

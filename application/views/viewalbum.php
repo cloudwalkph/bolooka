@@ -79,7 +79,13 @@
 					}
 
 					$alname = preg_replace("/[^a-zA-Z0-9]+/", " ", html_entity_decode($rows['album_name'], ENT_QUOTES));
-					$aldesc = preg_replace("/[^a-zA-Z0-9]+/", " ", html_entity_decode($rows['discrip'], ENT_QUOTES));
+					if($this->db->field_exists('descrip', 'albums')) {
+						$descrip = $rows['descrip'];
+					} else {
+						$descrip = $rows['discrip'];
+					}
+					$aldesc = preg_replace("/[^a-zA-Z0-9]+/", " ", html_entity_decode($descrip, ENT_QUOTES));
+					
 ?>
 <!--hidden for phone-->
 <div class="span4 hidden-phone pull-left al-holder <?php echo $i == $min ? 'lastidhere' : '' ; ?>" id="album-hold<?php echo $albumid; ?>" alt="<?php echo $albumid; ?>" style="margin-left:90px; margin-bottom:20px; text-align: left;">

@@ -2086,15 +2086,6 @@ echo '
 		echo $chkquery->num_rows();
 	}
 	
-	function updatealbum()
-	{
-		$albumid = $_POST['albumid'];
-		$desirename = $_POST['desirename'];
-		$desiredesc = $_POST['desiredesc'];
-		
-		$this->db->query("UPDATE `albums` SET `album_name`='$desirename', `discrip`='$desiredesc' WHERE `id`='$albumid'");
-	}
-	
 	function recordalbumseq()
 	{
 		$sequence = $this->input->post('sequence');
@@ -2111,13 +2102,20 @@ echo '
 			// echo $this->db->last_query();
 		}
 	}
-	
-	function upalbumname()
-	{
-		$albumid = $_POST['albumid'];
-		$album_name = $_POST['album_name'];
-		$albmdesc = $_POST['albmdesc'];
-		$this->db->query("UPDATE albums SET album_name='$album_name', discrip='$albmdesc' WHERE id='$albumid'");
+	function upalbumname() {
+		$albumid = $this->input->post ( 'albumid' );
+		$album_name = $this->input->post ( 'album_name' );
+		$albmdesc = $this->input->post ( 'albmdesc' );
+		$update_array = array (
+				'album_name' => $album_name 
+		);
+		if ($this->db->field_exists ( 'descrip', 'albums' )) :
+			$update_array ['descrip'] = $albmdesc;
+		 else :
+			$update_array ['discrip'] = $albmdesc;
+		endif;
+		$this->db->where ( 'id', $albumid );
+		$this->db->update ( 'albums', $update_array );
 	}
 	
 	// function post_comments() 
