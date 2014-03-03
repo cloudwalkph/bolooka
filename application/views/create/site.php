@@ -416,7 +416,7 @@ $(function(){
 					return false;
 				}
 			}
-			if($('.error_site').html() == 'Available!' && $('.error_com').html() == 'Available!')
+			if($('.error_site').html() == 'Available!')
 			{
 				$('#savingModal').modal({
 					keyboard: false
@@ -555,6 +555,7 @@ $(function(){
 					$('#site_name').parent().children('.help-inline').html('Checking...');
 				},
 				success: function (html) {
+					console.log(html);
 					if(html == 1) {
 						$('#site_name').parent().parent('.control-group').removeClass('success').addClass('error');
 						$('#site_name').parent().children('.help-inline').html('Name already exists!');

@@ -455,7 +455,7 @@ ul.also-like, ul.feed-area{
 					<img class="pull-left" src="<?php echo base_url('uploads/' . $webuser['user_id'] . '/' . $wid . '/' . $rowlike['page_id'] . '/' . $rowlike['id'] . '/' .$cover); ?>" onerror="this.src='<?php echo $noprimary; ?>'"/>
 					<div class="">
 						<a href="<?php echo base_url().$url.'/'.$row_page['url'].'/'.url_title($rowlike['name'], '-', TRUE).'/'.$rowlike['id']; ?>">
-						<h5><?php echo $rowlike['name']; ?></h5>
+						<div style="font-size: 0.83em;"><?php echo $rowlike['name']; ?></div>
 						</a>
 						<p class="pcats"><?php echo $rowlike['category']; ?></p>
 						<?php if($rowlike['price'] > 0){ ?>

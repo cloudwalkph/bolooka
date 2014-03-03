@@ -35,8 +35,8 @@
 	<div class="container-fluid">
 		<table id="websitesTable" class="table table-striped table-condensed table-bordered">
 		<caption>
-			<div> Total No. of Websites: <strong><?php echo $queryAllActiveWebsites->num_rows(); ?></strong> </div>
-			<div> Total No. of Approved Websites: <strong class="approved_prods"> <?php echo $queryApproved; ?> </strong> </div>
+			<span> Total No. of Websites: <strong><?php echo $queryAllActiveWebsites->num_rows(); ?></strong> </span><br>
+			<span> Total No. of Approved Websites: <strong class="approved_prods"> <?php echo $queryApproved; ?> </strong> </span>
 		</caption>
 		
 		<thead>

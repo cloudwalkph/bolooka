@@ -25,8 +25,8 @@
 ?>
 	<table id="productsTable" class="table table-condensed">
 		<caption>
-			<div> Total No. of Published Products: <strong> <?php echo $queryAllMarketProducts->num_rows(); ?> </strong> </div>
-			<div> Total No. of Approved Products: <strong class="approved_prods"> <?php echo $queryApproved; ?> </strong> </div>
+			<span> Total No. of Published Products: <strong> <?php echo $queryAllMarketProducts->num_rows(); ?> </strong> </span> <br>
+			<span> Total No. of Approved Products: <strong class="approved_prods"> <?php echo $queryApproved; ?> </strong> </span>
 		</caption>
 		<thead>
 			<tr>

@@ -3,8 +3,9 @@
 ?>
 <div class="container logo_design">
 	<div class="container-fluid comp_logo">
-		<a class="brand logo-style" href="<?php echo base_url().url_title($url); ?>">
-			<h1>
+		<h1>
+			<a class="brand logo-style" href="<?php echo base_url().url_title($url); ?>">
+
 <?php
 			$maxheight = '100px';
 			if($logo->logosize == 1){
@@ -29,8 +30,9 @@
 				}
 			}
 ?>
-			</h1>
-		</a>
+
+			</a>
+		</h1>
 	</div>
 </div>
 <div class="">

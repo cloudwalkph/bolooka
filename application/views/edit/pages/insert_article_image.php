@@ -40,7 +40,7 @@
 			}
 		} else {
 	?>
-			<h4> No Image/s Selected </h4>
+			<div style="font-size: 1em;"> No Image/s Selected </div>
 <?php
 		}
 ?>
