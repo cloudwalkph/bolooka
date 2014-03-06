@@ -525,7 +525,6 @@ ul.also-like, ul.feed-area{
 ?>
 <div class="span12" style="background:<?php echo $bg->boxcolor; ?>;border-radius: 6px;padding: 10px;">
 	<div class="row-fluid span8">
-	<legend style="font-family: Segoe UI Semibold; font-size: 18px; color: inherit;">Costumer Login</legend>
 <?php
 	$signin_form_attrib = array(
 		'id' => 'sign_buyer',
@@ -533,7 +532,8 @@ ul.also-like, ul.feed-area{
 		'class' => 'form-horizontal'
 	);
 	echo form_open(base_url('signin'), $signin_form_attrib);
-?>	
+?>
+	<legend style="font-family: Segoe UI Semibold; font-size: 18px; color: inherit;">Costumer Login</legend>
 		<input type="hidden" name="redirect_url" value="<?php echo $this->uri->uri_string(); ?>">
 		<div class="control-group">
 			<label class="control-label" for="inputEmail" style="font-family: 'Segoe UI';">Email</label>

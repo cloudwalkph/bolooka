@@ -17,24 +17,22 @@ class Create extends CI_Controller {
 	
 	function site()
 	{
-		if($this->session->userdata('logged_in'))
-		{
-			$site['username'] = $this->session->userdata('username');
-
-			$data['content'] = $this->load->view('create/site', $site, true);
-			
-			$data['activemenu'] = 'manage';
-			$data['sidebar'] = $this->load->view('dashboard/sidebar', $data, true);
-			$data['bar_holder'] = $this->load->view('bar_holder', $data, true);
-			$data['body'] = $this->load->view('manage_account', $data, true);
-			$data['footer'] = '';
-			
-			$this->load->view('dashboard/template', $data);
-		}
-		else
-		{
+		if(!$this->session->userdata('logged_in')) {
 			redirect(base_url());
+			exit(0);
 		}
+			
+		$site['username'] = $this->session->userdata('username');
+
+		$data['content'] = $this->load->view('create/site', $site, true);
+		
+		$data['activemenu'] = 'manage';
+		$data['sidebar'] = $this->load->view('dashboard/sidebar', $data, true);
+		$data['bar_holder'] = $this->load->view('bar_holder', $data, true);
+		$data['body'] = $this->load->view('manage_account', $data, true);
+		$data['footer'] = '';
+		
+		$this->load->view('dashboard/template', $data);
 	}
 	
 }

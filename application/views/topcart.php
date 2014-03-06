@@ -16,7 +16,7 @@
 <?php
 	$thecart = $this->cart->contents();
 ?>
-		<legend style="font-family: Segoe UI Light; font-size: 14px; color: rgb(255, 255, 255);">Shopping Cart <div class="pull-right"><?php echo $this->cart->total() == 0 ? 'empty' : '( ' . count($thecart) . ' item(s) )'; ?></div></legend>
+		<legend style="font-family: Segoe UI Light; font-size: 14px; color: rgb(255, 255, 255);">Shopping Cart <span class="pull-right"><?php echo $this->cart->total() == 0 ? 'empty' : '( ' . count($thecart) . ' item(s) )'; ?></span></legend>
 <?php 
 	if(!empty($thecart))
 	{

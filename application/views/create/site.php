@@ -385,7 +385,7 @@ a.thumbnail:hover {
     <h3 id="myModalLabel">Saving</h3>
   </div>
   <div class="modal-body">
-    <p>Please Wait…</p>
+    <p>Please Wait...</p>
   </div>
   <div class="modal-footer">
   </div>
@@ -418,9 +418,9 @@ $(function(){
 			}
 			if($('.error_site').html() == 'Available!')
 			{
-				$('#savingModal').modal({
-					keyboard: false
-				}).modal('show');
+// 				$('#savingModal').modal({
+// 					keyboard: false
+// 				}).modal('show');
 			} else {
 				$(document).scrollTop(document.getElementById('site_name').offsetTop - 50);
 				return false;

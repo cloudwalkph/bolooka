@@ -4,15 +4,15 @@ class Photo_Model extends CI_Model {
 
 	function upload($field_name=null, $user=null)
 	{
-		if($user != null) {
-			$upload_dir = 'uploads/'.$user.'/';
+		if ($user != null) {
+			$upload_dir = getcwd () . '/uploads/' . $user . '/';
 		} else {
-			$upload_dir = 'uploads/';
+			$upload_dir = getcwd () . '/uploads/';
 		}
-		if(!is_dir($upload_dir))
-		{
-		   mkdir($upload_dir, 0755, true);
-		}	
+		
+		if (! is_dir ( $upload_dir )) {
+			mkdir ( $upload_dir, 0755, true );
+		}
 		
 		$this->load->library('upload');
 		$config['upload_path'] = $upload_dir; //if the files does not exist it'll be created 
@@ -20,17 +20,12 @@ class Photo_Model extends CI_Model {
 		// $config['max_size'] = '2000'; //size in kilobytes
 		$config['encrypt_name']  = TRUE;
 
-			$this->upload->initialize($config);
-
-			if (!$this->upload->do_upload($field_name))
-			{
-				$uploaded = $this->upload->display_errors();
-			}
-			else
-			{
-				$uploaded = $this->upload->data();
-				
-			}
+		$this->upload->initialize($config);
+		if (! $this->upload->do_upload ( $field_name )) {
+			$uploaded = $this->upload->display_errors ();
+		} else {
+			$uploaded = $this->upload->data ();
+		}
 
 		return $uploaded; /* prints the result of the operation and analyze the data */
 	}
@@ -73,39 +68,42 @@ class Photo_Model extends CI_Model {
 	}
 	
 	function make_thumbnail($image_file=null, $image_width=80, $image_height=80) {
-		list($width, $height) = getimagesize($image_file);
-
-			$image_info = pathinfo($image_file);
-		
-			$this->load->library('image_lib');
+// 		var_dump(is_file($image_file)); return false;
+		if(is_file($image_file)) {
+			list($width, $height) = getimagesize($image_file);
+	
+				$image_info = pathinfo($image_file);
 			
-			$img_array['image_library'] = 'gd2';
-			$img_array['source_image'] = $image_file;
-			$img_array['maintain_ratio'] = TRUE;
-			$img_array['width'] = $image_width;
-			$img_array['height'] = $image_height;
-			
-			$folderName = $image_info['dirname'].'/thumbnail';
-			
-			if(!is_dir($folderName))
-			{
-			   mkdir($folderName, 0755, true);
+				$this->load->library('image_lib');
+				
+				$img_array['image_library'] = 'gd2';
+				$img_array['source_image'] = $image_file;
+				$img_array['maintain_ratio'] = TRUE;
+				$img_array['width'] = $image_width;
+				$img_array['height'] = $image_height;
+				
+				$folderName = $image_info['dirname'].'/thumbnail';
+				
+				if(!is_dir($folderName))
+				{
+				   mkdir($folderName, 0755, true);
+				}
+	
+				$img_array['new_image'] = $folderName.'/'.$image_info['basename'];
+				
+			if($width > $image_width || $height > $image_height) {
+				$this->image_lib->initialize($img_array);
+				if (!$this->image_lib->resize())
+				{
+					return $this->image_lib->display_errors('<p>','</p>');
+				}
+			} else {
+				if (!copy($image_file, $img_array['new_image'])) {
+					echo "failed to copy $file...\n";
+				}
 			}
-
-			$img_array['new_image'] = $folderName.'/'.$image_info['basename'];
-			
-		if($width > $image_width || $height > $image_height) {
-			$this->image_lib->initialize($img_array);
-			if (!$this->image_lib->resize())
-			{
-				return $this->image_lib->display_errors('<p>','</p>');
-			}
-		} else {
-			if (!copy($image_file, $img_array['new_image'])) {
-				echo "failed to copy $file...\n";
-			}
+			return $img_array['new_image'];
 		}
-		return $img_array['new_image'];
 	}
 
 	function make_medium($image_file=null, $image_width=0, $image_height=0) {

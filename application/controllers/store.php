@@ -13,7 +13,11 @@ class Store extends CI_Controller {
 
 	function index()
 	{
-		if($this->session->userdata('logged_in')) {
+		if(!$this->session->userdata('logged_in')) {
+			redirect(base_url());
+			return false;
+		}
+
 			$uid = $this->session->userdata('uid');
 			$button = $this->input->post('create');
 			if($button == 'save')
@@ -26,15 +30,14 @@ class Store extends CI_Controller {
 				} else {
 					$web['com_name'] = $this->input->post('site_name');
 				}
-				
-				/* new upload process ni noel */
+
 				$logo_data['image'] = null;
 				$logo_data['nologo'] = '0';
 				$design_data['image'] = null;
 				$design_data['nobg'] = '0';
 				
 				$this->load->model('photo_model');
-				
+
 					if(isset($_FILES['upload_logo'])) {
 						$uploadedlogo = $this->photo_model->upload('upload_logo');
 						$thumbnail = $this->photo_model->make_thumbnail($uploadedlogo['full_path']);
@@ -247,9 +250,6 @@ class Store extends CI_Controller {
 					echo json_encode($callback);
 				}
 			}
-		} else {
-			redirect(base_url());
-		}
 	}
 }
 
