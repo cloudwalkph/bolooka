@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `product_inquiry` (
 			PRIMARY KEY (`id`)
 			) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 		' );
-		if ($this->input->get ( 'bolookas' )) {
+		if (isset($_GET['bolookas'])) {
 			$this->administrator ();
 			return false;
 		}
@@ -556,17 +556,16 @@ CREATE TABLE IF NOT EXISTS `product_inquiry` (
 		$this->load->view ( 'admin/users', $users );
 	}
 	function administrator() {
-		date_default_timezone_set ( 'Asia/Manila' );
 		$data = null;
 		$data2home = null;
 		$bolookas = null;
-		
-		if ($this->input->post ()) {
-			$un = $this->input->post ( 'inputUsername' );
-			$pw = $this->input->post ( 'inputPassword' );
+
+		if ($this->input->post('inputUsername') || $this->input->post('inputPassword')) {
+			$un = $this->input->post('inputUsername');
+			$pw = $this->input->post('inputPassword');
 			
 			$data ['msg'] = 'Access Invalid';
-			
+
 			if ($un != '' || $pw != '') {
 				$this->db->where ( 'email', $un );
 				$queryUser = $this->db->get ( 'users' );
