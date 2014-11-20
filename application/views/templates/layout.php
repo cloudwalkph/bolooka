@@ -40,7 +40,7 @@
 	  })();
 
 	</script>
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 	var fb_param = {};
 	fb_param.pixel_id = '6008314191490';
 	fb_param.value = '0.00';
@@ -53,6 +53,7 @@
 	})();
 	</script>
 	<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6008314191490&amp;value=0" /></noscript>
+	-->
 <?php
 	}
 ?>
@@ -266,6 +267,14 @@ design .brand h1{
 </style>
 </head>
 <body class="<?php echo $layout; ?> <?php echo $this->session->userdata('logged_in') ? '' : ''; ?>">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=203727729715737&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <?php $this->load->view('signtop'); ?>
 <?php
 	echo $body;
