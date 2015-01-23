@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'bolcom_dev';
-$db['default']['password'] = 'dev2468';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
 $db['default']['database'] = 'bolcom_alpha_db';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

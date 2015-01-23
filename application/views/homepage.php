@@ -74,41 +74,8 @@
 	<link href="<?php echo base_url() ?>assets/css/bolooka.css" type="text/css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>assets/css/new_bolooka.css" type="text/css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>assets/css/jquery-ui.css" type="text/css" rel="stylesheet">
-
 	<script src="<?php echo base_url() ?>assets/js/jquery.min.js" type="text/javascript" ></script>
 	<script src="<?php echo base_url() ?>assets/js/jquery-ui.min.js" type="text/javascript" ></script>
-<style>
-      /* Sticky footer styles
-      -------------------------------------------------- */
-
-      html,
-      body {
-        height: 100%;
-        /* The html and body elements cannot have any padding or margin. */
-		padding: 0;
-      }
-
-      /* Wrapper for page content to push down footer */
-      #wrap {
-        min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        /* Negative indent footer by it's height */
-        /* margin: 0 auto -38px; */
-      }
-
-      /* Set the fixed height of the footer here */
-      #push,
-      #footer {
-        height: 38px;
-      }
-      #footer {
-        /* background-color: #f5f5f5; */
-		margin-top: -38px;
-      }
-
-      /* Lastly, apply responsive CSS fixes as necessary */
-</style>
 </head>
 <body id="<?php echo isset($page) ? $page : ''; ?>">
 

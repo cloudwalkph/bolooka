@@ -1,18 +1,3 @@
-<style>
-	#social_form .control-group .controls input {
-		box-shadow: none;
-		border: 0;
-		border-bottom: 1px solid #4F4F4F;
-		border-radius: 0;
-		background: #383838;
-		width: 85%;
-		color: #fff;
-	}
-	#social_form .control-group {
-		margin: 0 auto;
-	}
-	
-</style>
 	<form id="social_form" onsubmit="return false" style="margin-bottom: 0;">
 		<input type="hidden" name="social_id" id="social_id" value="<?php echo $init; ?>"/>
 		<input type="hidden" name="loginType" id="loginType" value="<?php echo $connect; ?>"/>
