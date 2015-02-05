@@ -80,38 +80,38 @@
 		</div>
 	</div>
 
-	<script>
-		$('document').ready(function(e) {
-			var options = {
-				'backdrop':'true',
-				'show': false
-			};
-			$('#contact-modal').modal(options);
+	<!--<script>
+		// $('document').ready(function(e) {
+			// var options = {
+				// 'backdrop':'true',
+				// 'show': false
+			// };
+			// $('#contact-modal').modal(options);
 
-			$('#contactForm').submit(function(e) {
-				$('#contact-modal').modal('show');
-			});
+			// $('#contactForm').submit(function(e) {
+				// $('#contact-modal').modal('show');
+			// });
 			
-			$('#contactSubmit').click(function(e) {
-				$('#contact-modal').modal('hide');
-				$('#contactForm').ajaxForm({
-					// data: {},
-					beforeSubmit: function(formData, jqForm, options){
+			// $('#contactSubmit').click(function(e) {
+				// $('#contact-modal').modal('hide');
+				// $('#contactForm').ajaxForm({
+					/* data: {}, */
+					// beforeSubmit: function(formData, jqForm, options){
 
-					},
-					success: function(html) {
-						if(html == 1) {
-							$('#alertbox').html('<div class="alert alert-success fade in"><button data-dismiss="alert" class="close" type="button">&times;</button><strong>Email Sent!</strong> We will review your message and get back to you as soon as possible.</div>');
-							setTimeout(function () { $('.alert-success').alert('close') }, 5000);
-							contactForm.reset();
-						}
-					}
-				}).submit();
+					// },
+					// success: function(html) {
+						// if(html == 1) {
+							// $('#alertbox').html('<div class="alert alert-success fade in"><button data-dismiss="alert" class="close" type="button">&times;</button><strong>Email Sent!</strong> We will review your message and get back to you as soon as possible.</div>');
+							// setTimeout(function () { $('.alert-success').alert('close') }, 5000);
+							// contactForm.reset();
+						// }
+					// }
+				// }).submit();
 			
-				if (!e) var e = window.event;
-				e.cancelBubble = true;
-				if (e.stopPropagation) e.stopPropagation();
-			});
-		});
-	</script>
+				// if (!e) var e = window.event;
+				// e.cancelBubble = true;
+				// if (e.stopPropagation) e.stopPropagation();
+			// });
+		// });
+	</script>-->
 

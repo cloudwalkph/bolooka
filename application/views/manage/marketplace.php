@@ -133,32 +133,36 @@
 		</div>
 	</div>
 </div>
+<input type="hidden" id="marketplace_base_url" value="<?= base_url();?>" />
+<input type="hidden" id="marketplace_group_id" value="<?= $group_id;?>" />
 </div>
-<script>
-$('#msy-web').click(function(ev,ui) {
-	if(ev.ctrlKey == true ) {
-		if(confirm("Are you sure you want to delete")) {
-			var xmlhttp;
-			if (window.XMLHttpRequest)
-			  {// code for IE7+, Firefox, Chrome, Opera, Safari
-			  xmlhttp=new XMLHttpRequest();
-			  }
-			else
-			  {// code for IE6, IE5
-			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			  }
-			xmlhttp.onreadystatechange=function()
-			  {
-			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-				{
-					var data = xmlhttp.responseText;
-					location.href = 'manage/market';
-				}
-			  }
-			xmlhttp.open("POST","<?php echo base_url('manage/market/delete'); ?>",true);
-			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			xmlhttp.send("market_id=<?php echo $group_id; ?>");
-		}
-	}
-});
-</script>
+<!--<script>
+// $('#msy-web').click(function(ev,ui) {
+	// var marketplace_base_url = $("#marketplace_base_url").val();
+	// var marketplace_group_id = $("#marketplace_group_id").val();
+	// if(ev.ctrlKey == true ) {
+		// if(confirm("Are you sure you want to delete")) {
+			// var xmlhttp;
+			// if (window.XMLHttpRequest)
+			  // {// code for IE7+, Firefox, Chrome, Opera, Safari
+			  // xmlhttp=new XMLHttpRequest();
+			  // }
+			// else
+			  // {// code for IE6, IE5
+			  // xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			  // }
+			// xmlhttp.onreadystatechange=function()
+			  // {
+			  // if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				// {
+					// var data = xmlhttp.responseText;
+					// location.href = 'manage/market';
+				// }
+			  // }
+			// xmlhttp.open("POST",marketplace_base_url+"manage/market/delete",true);
+			// xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			// xmlhttp.send("market_id="+marketplace_group_id);
+		// }
+	// }
+// });
+</script>-->

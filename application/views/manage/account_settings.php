@@ -176,7 +176,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', end
 </style>
 
 <div class="container-fluid mobile_view">
-
+	<input type="hidden" id="account_settings_uid" value="<?php echo $uid;?>"/>
+	<input type="hidden" id="account_settings_base_url" value="<?php echo base_url();?>"/>
 	<!--alerts-->
 	<div class="alert alert-success success_profile" style="margin-bottom: 0;display:none;">
 		<button type="button" class="close" data-dismiss="alert">x</button>
@@ -200,41 +201,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', end
 ?>
 		<div style="font-family: Segoe UI Semibold;" class="head"> Connect with Social Media: </div>
 
-			<div class="control-group">
-				<label class="control-label" for="first_name"> Facebook: </label>
-				<div class="controls">
-				
-					<div class="onoffswitch">
-						<input type="checkbox" name="status_fb" class="onoffswitch-checkbox" id="status_fb" <?php echo isset($user->fb_id_fk) == 1 ? 'checked' : ''; ?>>
-						<label id="fb_switch" class="onoffswitch-label" for="status_fb">
-							<div class="onoffswitch-inner"></div>
-							<div class="onoffswitch-switch"></div>
-						</label>
-					</div>
-					<div class="form-inline hide_this_fb" style="<?php echo isset($user->fb_id_fk) ? '' : 'display: none;'; ?>">
-						<span class="mobile_margin" style="margin: 0 25px;">Publish: </span><input type="checkbox" class="check_out" name="publish_blog" value="yes" <?php echo $pub_blog == 'yes' ? 'checked="checked"' : ''; ?> style="margin-bottom: 8px;vertical-align: middle;">
-						<span style="margin-right: 20px;">Blog</span><input type="checkbox" class="check_out" name="publish_gal" value="yes" <?php echo $pub_gal == 'yes' ? 'checked="checked"' : ''; ?> style="margin-bottom: 8px;vertical-align: middle;">
-						<span style="margin-right: 30px;">Gallery</span><a class="btn btn-primary" href="<?php echo base_url(); ?>manage/facebook_page_list" style="border-radius: 0;padding: 4px 15px;"> Find Facebook Friends on Bolooka </a>
-					</div>
+		<div class="control-group">
+			<label class="control-label" for="first_name"> Facebook: </label>
+			<div class="controls">
+			
+				<div class="onoffswitch">
+					<input type="checkbox" name="status_fb" class="onoffswitch-checkbox" id="status_fb" <?php echo isset($user->fb_id_fk) == 1 ? 'checked' : ''; ?>>
+					<label id="fb_switch" class="onoffswitch-label" for="status_fb">
+						<div class="onoffswitch-inner"></div>
+						<div class="onoffswitch-switch"></div>
+					</label>
+				</div>
+				<div class="form-inline hide_this_fb" style="<?php echo isset($user->fb_id_fk) ? '' : 'display: none;'; ?>">
+					<span class="mobile_margin" style="margin: 0 25px;">Publish: </span><input type="checkbox" class="check_out" name="publish_blog" value="yes" <?php echo $pub_blog == 'yes' ? 'checked="checked"' : ''; ?> style="margin-bottom: 8px;vertical-align: middle;">
+					<span style="margin-right: 20px;">Blog</span><input type="checkbox" class="check_out" name="publish_gal" value="yes" <?php echo $pub_gal == 'yes' ? 'checked="checked"' : ''; ?> style="margin-bottom: 8px;vertical-align: middle;">
+					<span style="margin-right: 30px;">Gallery</span><a class="btn btn-primary" href="<?php echo base_url(); ?>manage/facebook_page_list" style="border-radius: 0;padding: 4px 15px;"> Find Facebook Friends on Bolooka </a>
 				</div>
 			</div>
-			
-			<!--<div class="control-group">
-				<label class="control-label" for="first_name"> Twitter: </label>
-				<div class="controls">
-					<div class="onoffswitch">
-						<input type="checkbox" name="twitter_switch" class="onoffswitch-checkbox" id="twitter_switch">
-						<label id="fb_switch" class="onoffswitch-label" for="twitter_switch">
-							<div class="onoffswitch-inner"></div>
-							<div class="onoffswitch-switch"></div>
-						</label>
-					</div>
-					<span class="help-inline" style="padding-top: 5px;">
-						<a id="twitter_information"> </a>
-					</span>
-				</div>
-			</div>-->
-		
+		</div>		
 	<hr/>
 	
 		<div style="font-family: Segoe UI Semibold;" class="head"> Change Password: </div>
@@ -337,244 +321,3 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', end
 	  </div>
 	</div>	
 </div>
-
-
-<script type="text/javascript">
-
-		function validateEmail(email) {
-			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-			return re.test(email);
-		}
-		
-		function deactivate_account(el)
-		{
-			$('#myModal_deactivate').modal('hide');
-			$('#myModal_deactivate_confirm').modal('show');
-		}
-		
-		function deactivate_process()
-		{
-			var user_id = $('.account_password').attr('id');
-			var pass = $('.account_password').val();
-			var dataString = 'uid='+user_id+'&pass='+pass;
-			
-			if(pass == '')
-			{
-				$('.account_password').focus();
-				$('.error_msg').html('Please enter your password');
-				return false;
-			}
-			$.ajax({
-				type: 'POST',
-				url: '<?php echo base_url('settings/deactivate_account'); ?>',
-				data: dataString,
-				success: function(html){
-					if(html == 'error')
-					{
-						$('.error_msg').html('Password did not match');
-						$('.account_password').val('');
-						$('.account_password').focus();
-					}else
-					{
-						window.location = '<?php echo base_url('logout'); ?>';
-					}
-				}
-			
-			});
-		}
-
-	/* submit profile form */
-	$('#submitsett').click(function(e) {
-		$("#form_sett").ajaxForm({
-			beforeSubmit: function() {
-				$('#submitsett').button('loading');				
-			},
-			success: function(html) {
-				$('.message_to_user').html('');
-				if(html == 'success'){
-					$('.success_profile').show();
-					$(window).scrollTop(0);
-				}else if(html == 'fail1'){
-					$('.message_to_user').html('Password did not match');
-					$('.error_profile').show();
-					$(window).scrollTop(0);
-				}else if(html == 'fail2'){
-					$('.message_to_user').html('New password cannot be blank');
-					$('.error_profile').show();
-					$(window).scrollTop(0);
-				}else if(html == 'fail3'){
-					$('.message_to_user').html('Current password did not match');
-					$('.error_profile').show();
-					$(window).scrollTop(0);
-				}
-				$('#submitsett').button('reset');
-			}
-			// $('#currPass').val('');
-			// $('#newPass').val('');
-			// $('#rePass').val('');
-		});
-	});
-
-	window.fbAsyncInit = function() {
-	  FB.init({
-		appId      : '203727729715737', // App ID
-		// channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
-		status     : false, // check login status
-		cookie     : true, // enable cookies to allow the server to access the session
-		xfbml      : true  // parse XFBML
-	  });
-		$('#fb_switch').click(function(){
-			var eto = $(this);
-			if($('#status_fb').is(':checked') != true)
-			{
-				FB.login(function(response) {
-				
-					/* if fb user is authorized  */
-					if (response.authResponse) {
-						
-						console.log('Welcome!  Fetching your information.... ');
-						FB.api('/me', function(response) {
-							console.log('Good to see you, ' + response.id + '.');
-							
-							/* check if fb user is already in bolooka user */
-							$.post("<?php echo base_url(); ?>signup/connect_to_fb",
-							{
-								'id': response.id
-							},function(html){
-								if(html == 'meron')
-								{
-									/* sign out the fb account */
-									// alert('Facebook account is already used by another bolooka user');
-									$('#myModal_switch_fb').modal('show');
-									FB.getLoginStatus(function(response) {
-										if (response.status === 'connected') {
-											FB.logout(function(response) {
-												/* user is now logged out */
-												$('#status_fb').removeAttr('checked');
-											});
-										}
-									});
-								}
-								else
-								{
-									$('#status_fb').attr('checked','checked');
-									$('.hide_this_fb').show();
-									$('.check_out').attr('checked','checked');
-								}							
-							});
-						});
-						
-					} else {
-						console.log('User cancelled login or did not fully authorize.');
-						$('#status_fb').removeAttr('checked');
-					}
-				},{scope: 'email,user_birthday,publish_stream,offline_access'});
-			}else
-			{
-					$('#myModal_disconnect_fb').modal('show');
-					return false;
-			}
-		});
-		
-		$('#fb_dis_button').click(function(){
-			var dataString = 'uid=<?php echo $uid; ?>';
-			$.ajax({
-				type: "POST",
-				url: '<?php echo base_url(); ?>signup/disconnected_fb',
-				data: dataString,
-				success: function(html){
-					FB.getLoginStatus(function(response) {
-						if (response.status === 'connected') {
-							var uid = response.authResponse.userID;
-							var accessToken = response.authResponse.accessToken;
-							
-							/* tangal permission mo sa fb bolooka apps */
-							FB.api('/me/permissions', 'delete', function() {
-									console.log('permission deleted');
-							});
-							
-							/* log out sa fb */
-							FB.logout(function(response) {
-								// user is now logged out
-								$('#myModal_disconnect_fb').modal('hide');
-								$('#status_fb').removeAttr('checked');
-								$('.hide_this_fb').hide();
-							});
-							
-						} else if (response.status === 'not_authorized') {
-						  alert('User not authorized');
-							/* the user is logged in to Facebook, 
-							but has not authenticated your app */
-						} else {
-
-						/* the user isn't logged in to Facebook. */
-						}
-					});							
-				}
-			});		
-		});
-	};
-	/* Load the SDK Asynchronously */
-	(function(d){
-	   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-	   if (d.getElementById(id)) {return;}
-	   js = d.createElement('script'); js.id = id; js.async = true;
-	   js.src = "//connect.facebook.net/en_US/all.js";
-	   ref.parentNode.insertBefore(js, ref);
-	 }(document));
-	
-	/* twitter script link nasa dashboard/template.php */
-	jQuery(function () {
-
-		twttr.anywhere(function (T) {
-			$('#twitter_switch').click(function(){
-				alert('asd');
-				if (T.isConnected()) {
-					$('#twitter_switch').attr('checked','checked');
-					twttr.anywhere.signOut();
-				}else{
-					$('#twitter_switch').removeAttr('checked');
-					T.signIn();
-				} 	
-			});
-			
-			/* document ready twitter log in */
-			if (T.isConnected()) {
-				
-				$('#twitter_switch').attr('checked','checked');
-				
-				/* hover card */
-				var twitterLink = T.currentUser.data('screen_name');
-				$("#twitter_information").html('@'+twitterLink);
-				T("#twitter_information").hovercards({ infer: true });
-			}
-			else
-			{
-				$('#twitter_switch').removeAttr('checked');
-				$("#twitter_information").html('');
-			} 
-			
-			/* after twitter log in */
-			T.bind("authComplete", function (e, user) {
-				if (T.isConnected()) {
-					// $('#twitter_switch').attr('checked','checked');
-					alert('conn');
-				} else {
-					alert('notconn');
-					$('#twitter_switch').removeAttr('checked');
-					$("#twitter_information").html('');
-				}
-				/* hover card */
-				var twitterLink = T.currentUser.data('screen_name');
-				$("#twitter_information").html('@'+twitterLink);
-				T("#twitter_information").hovercards({ infer: true });
-			});
-			
-			/* after twitter log out */
-			T.bind("signOut", function (e) {
-				$('#twitter_switch').removeAttr('checked');
-				$("#twitter_information").html('');
-			});	
-		});
-	});
-</script>

@@ -177,99 +177,107 @@
 		</p>
 	</div>
 </div>
-
-<script>
-$(function() {
-	$('#contentArea').delegate('.add_user', 'click', function() {
-		$('#user_input').show();
-	});
+<input type="hidden" id="user_manager_base_url" value="<?= base_url();?>">
+<input type="hidden" id="user_manager_group_id" value="<?= $group_id;?>">
+<!--<script>
+// $(function() {
+	// $('#contentArea').delegate('.add_user', 'click', function() {
+		// $('#user_input').show();
+	// });
 	
-	$('.search_user').click(function(){
-		var key = $('#email_role').val();
-		var dataString = { 'item': key, 'group_id': '<?php echo $group_id; ?>' };
-		$.ajax({
-			type: "POST",
-			url: '<?php echo base_url(); ?>test/add_role',
-			data: dataString,
-			success: function(html) {
-				$('#search').html(html);
-				var windowH = $('table').height();	
-				setTimeout(function(){
-					$('html, body').animate({ scrollTop: windowH });
-				},500);
-			}
-		});		
-	});
+	// $('.search_user').click(function(){
+		// var user_manager_base_url = $('#user_manager_base_url').val();
+		// var user_manager_group_id = $('#user_manager_group_id').val();
+		// var key = $('#email_role').val();
+		// var dataString = { 'item': key, 'group_id': user_manager_group_id };
+		// $.ajax({
+			// type: "POST",
+			// url: user_manager_base_url+'test/add_role',
+			// data: dataString,
+			// success: function(html) {
+				// $('#search').html(html);
+				// var windowH = $('table').height();	
+				// setTimeout(function(){
+					// $('html, body').animate({ scrollTop: windowH });
+				// },500);
+			// }
+		// });		
+	// });
 
-	$('.on_add').click(function(){
-		var uid = $(this).attr('alt');
-		var type = $(this).parent().parent('tr').children('td').children('.role_type').val();
+	// $('.on_add').click(function(){
+		// var uid = $(this).attr('alt');
+		// var user_manager_base_url = $('#user_manager_base_url').val();
+		// var user_manager_group_id = $('#user_manager_group_id').val();
+		// var type = $(this).parent().parent('tr').children('td').children('.role_type').val();
 		
-		var dataString = 'uid='+uid+'&type='+type+'&group_id=<?php echo $group_id; ?>';
-		$.ajax({
-			type: "POST",
-			url: '<?php echo base_url(); ?>test/add_user_role',
-			data: dataString,
-			success: function(html) {
-				$('.add'+uid).parent().parent().fadeOut(1000);
-			}
-		});
-	});
+		// var dataString = 'uid='+uid+'&type='+type+'&group_id='+user_manager_group_id;
+		// $.ajax({
+			// type: "POST",
+			// url: user_manager_base_url+'test/add_user_role',
+			// data: dataString,
+			// success: function(html) {
+				// $('.add'+uid).parent().parent().fadeOut(1000);
+			// }
+		// });
+	// });
 
-	$('.on_edit').click(function(){
-		$(this).html('save');
-		$(this).removeClass('on_edit');
-		$(this).addClass('on_save');
-		$(this).parent().parent('tr').children('.role_status').html(
-							'<select class="role_type">'+
-								'<option value="1">Administrator</option>'+
-								'<option value="2">Moderator</option>'+
-								'<option value="3" selected>Member</option>'+
-							'</select>'
-		);
-	});
+	// $('.on_edit').click(function(){
+		// $(this).html('save');
+		// $(this).removeClass('on_edit');
+		// $(this).addClass('on_save');
+		// $(this).parent().parent('tr').children('.role_status').html(
+							// '<select class="role_type">'+
+								// '<option value="1">Administrator</option>'+
+								// '<option value="2">Moderator</option>'+
+								// '<option value="3" selected>Member</option>'+
+							// '</select>'
+		// );
+	// });
 
-	$('.on_delete').click(function(){
+	// $('.on_delete').click(function(){
 	
-		var user_id = $(this).attr('alt');
-		var pass_id = $('.delete_alert').attr('alt',user_id);
-		$('#myModal_user_role').modal('show');
+		// var user_id = $(this).attr('alt');
+		// var pass_id = $('.delete_alert').attr('alt',user_id);
+		// $('#myModal_user_role').modal('show');
 
-	});
+	// });
 	
-	$('.delete_alert').click(function(){
-		var user_id = $(this).attr('alt');
-		var dataString = 'uid='+user_id;
+	// $('.delete_alert').click(function(){
+		// var user_id = $(this).attr('alt');
+		// var dataString = 'uid='+user_id;
+		// var user_manager_base_url = $('#user_manager_base_url').val();
 		
-		$.ajax({
-			type: "POST",
-			url: '<?php echo base_url(); ?>test/delete_role',
-			data: dataString,
-			success: function(html) {
-				window.location.href = '<?php echo base_url('manage/market/user')?>';
-			}
-		});	
-	});
+		// $.ajax({
+			// type: "POST",
+			// url: user_manager_base_url+'test/delete_role',
+			// data: dataString,
+			// success: function(html) {
+				// window.location.href = user_manager_base_url'manage/market/user';
+			// }
+		// });	
+	// });
 	
-	$('#on_save').click(function(){
-		$(this).html('edit');
-		$(this).removeClass('on_save');
-		$(this).addClass('on_edit');
+	// $('#on_save').click(function(){
+		// $(this).html('edit');
+		// $(this).removeClass('on_save');
+		// $(this).addClass('on_edit');
 	
-		var user_id = $(this).attr('alt');
-		var role_type = $(this).parent().parent('tr').children('.role_status').children('.role_type').val();
-		var event = $(this).parent().parent('tr');
+		// var user_id = $(this).attr('alt');
+		// var role_type = $(this).parent().parent('tr').children('.role_status').children('.role_type').val();
+		// var event = $(this).parent().parent('tr');
+		// var user_manager_base_url = $('#user_manager_base_url').val();
+		// var user_manager_group_id = $('#user_manager_group_id').val();
 		
-		var dataString = 'uid='+user_id+'&role_type='+role_type+'&group_id=<?php echo $group_id; ?>';	
+		// var dataString = 'uid='+user_id+'&role_type='+role_type+'&group_id='+user_manager_group_id;	
 		
-		$.ajax({
-			type: "POST",
-			url: '<?php echo base_url(); ?>test/edit_role',
-			data: dataString,
-			success: function(html) {
-				$(event).children('.role_status').html(html);
-			}
-		});		
-	});
-});
-</script>
+		// $.ajax({
+			// type: "POST",
+			// url: user_manager_base_url+'test/edit_role',
+			// data: dataString,
+			// success: function(html) {
+				// $(event).children('.role_status').html(html);
+			// }
+		// });		
+	// });
+// });
+</script>-->
