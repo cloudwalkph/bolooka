@@ -31,13 +31,39 @@
 ?>
 		</div>
 	</div>
-	<input type="hidden" id="market_product_base_url" value="<?php echo base_url() ?>" />
-	<input type="hidden" id="" value="" />
 </div>
 <?php
 	if($groupID['role'] != 3)
 	{
-		$page= "<script type='text/javascript'>page_add_success('OK')</script>";
-		echo $page;
+?>
+<script>
+$(function() {
+	$('#prod_list').delegate('.prod','click', function(event) {
+		var prodId = this.id;
+		$(this).children('.offprod').css('display','block');
+		$(this).children('.prod_info').css('opacity','0.5');
+		$(this).removeClass('prod').addClass;
+		$.post( '<?php echo base_url() ?>dashboard/moderateProd', {'prodId':prodId, 'action':'disable'},
+		function( data ) {
+			
+		});
+	});
+  
+	$('#prod_list').delegate('.offprod', 'click', function(event) {
+		var prodId = $(this).parent().attr('id');
+		$(this).css('display','none');
+		$(this).parent().addClass('prod');
+		$(this).parent().children('.prod_info').css('opacity','1');
+		$.post( '<?php echo base_url() ?>dashboard/moderateProd', {'prodId':prodId,'action':'enable'},
+		function( data ) {
+
+		});
+	});
+
+	// .onmouseenter = function(el) { }
+	// document.getElementById('prod_list').onmouseenter = function() { alert('hehe'); }
+});
+</script>
+<?php
 	}
 ?>

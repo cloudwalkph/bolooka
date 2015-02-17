@@ -77,13 +77,6 @@
 
 	<script src="<?php echo base_url() ?>assets/js/jquery.min.js" type="text/javascript" ></script>
 	<script src="<?php echo base_url() ?>assets/js/jquery-ui.min.js" type="text/javascript" ></script>
-	<!-- The basic File Upload plugin -->
-	<script src="<?php echo base_url() ?>assets/jQuery-File-Upload-master/js/jquery.fileupload.js"></script>
-	<!-- The File Upload file processing plugin -->
-	<script src="<?php echo base_url() ?>assets/jQuery-File-Upload-master/js/jquery.fileupload-fp.js"></script>
-	<!-- The File Upload user interface plugin -->
-	<script src="<?php echo base_url() ?>assets/jQuery-File-Upload-master/js/jquery.fileupload-ui.js"></script>
-	<!-- The main application script -->
 <style>
       /* Sticky footer styles
       -------------------------------------------------- */
@@ -140,7 +133,6 @@
 	<script src="<?php echo base_url() ?>assets/js/jquery.masonry.min.js" type="text/javascript" ></script>
 	<script src="<?php echo base_url() ?>assets/bootstrap/js/bootstrap.min.js" type="text/javascript" ></script>
 	<script src="<?php echo base_url() ?>assets/infinite-scroll-master/jquery.infinitescroll.min.js" type="text/javascript" ></script>
-	<script src="<?php echo base_url() ?>assets/colorpicker/js/bootstrap-colorpicker.js" type="text/javascript" ></script>
-	<script src="<?php echo base_url() ?>assets/js/bolooka.js" type="text/javascript" ></script>
+
 </body>
 </html>

@@ -1,3 +1,25 @@
+<style>
+#footer-cont {
+	padding: 30px 0;
+}
+.footer_link .f-h {
+    color: #F6F6F6;
+    font-family: Segoe UI Semibold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.footer_link li a:hover {
+	color: #fff;
+}
+.footer_link li a {
+    color: #C9CCC5;
+    font-family: Segoe UI;
+    font-size: 12px;
+}
+.hover_effect:hover {
+	opacity: 0.7;
+}
+</style>
 <!-- Footer links -->
 
 	<div style='background-image: url("<?php echo base_url(); ?>img/homepage/footer_bg.jpg"); border-top: 1px solid rgb(255, 255, 255); margin-top: -203px;'>

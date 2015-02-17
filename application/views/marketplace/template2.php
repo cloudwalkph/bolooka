@@ -95,6 +95,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#84a57a', end
 						<li class="disabled">
 							<a>&#9679;</a>
 						</li>
+<?php
+	if(isset($categories)) {
+?>
 						<li class="dropdown">
 							<a id="categs" class="dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;">Categories <b class="caret"></b> </a>
 		<?php
@@ -119,6 +122,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#84a57a', end
 						<li class="disabled">
 							<a>&#9679;</a>
 						</li>
+<?php
+	}
+?>
 						<li>
 							<a id="latest_website" class="mktmnu" style="cursor: pointer;">Websites</a>
 						</li>	

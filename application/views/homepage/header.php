@@ -1,3 +1,26 @@
+<style>
+/* CUSTOMIZE THE NAVBAR FOR HEADER FILE(header.php)
+---------------------------------------------------------------------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+	background-color: rgba(255, 255, 255, 0.7);
+}
+.navbar-wrapper .navbar {
+
+}
+.navbar-inner {
+    background-color: rgba(250, 250, 250, 0.7);
+    background-image: none;
+}
+.accordion-group {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+/* END
+---------------------------------------------------------------------------------------------------------------- */
+</style>
 <?php
 	$logged = $this->session->userdata('logged_in');
 	if(isset($logged))

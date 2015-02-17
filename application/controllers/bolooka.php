@@ -20,7 +20,7 @@ class Bolooka extends CI_Controller {
 		$this->load->model ( 'video_model' );
 		$this->load->library ( 'cart' );
 		$this->load->library ( 'encrypt' );
-		 
+		
 		$this->load->model ( 'marketplace_model' );
 		$this->load->model ( 'facebook_model' );
 		$this->load->model ( 'wall_updates' );

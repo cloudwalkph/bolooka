@@ -209,66 +209,65 @@
 ?>
 		</div>
 	</div>
-	<input type="hidden" id="website_base_url" value="<?= base_url();?>" />
-<!--<script type="text/javascript">
-// $(function(){
-	// $('#tooltip_create_button').tooltip({
-		// html: true,
-		// trigger: 'click',
-		// title: 'You have exceeded your website creation limit. Please contact us for more info.',
-		// delay: { show: 500, hide: 100 }
-	// });
-	// $('#website').delegate('.deleteWebsite', 'click', function(e) {
-		// if(e.shiftKey == true) {
-			// $.ajax({
-				// 'url': 'manage/del_web',
-				// 'data': {'website_id': $(e.target).attr('alt')},
-				// 'beforeSend': function(a,b,c) {
-				// },
-				// 'success': function(html) {
-					// $(e.target).parents('tr').slideUp();
-				// }
-			// });
-		// } else {
-			// var webId = $(this).attr('alt');
-			// $('.website_id').val(webId);
-			// $('#myModal_delete_website').modal('show');
-			// $('#dwyes').removeAttr('disabled');
-			// $('#dwyes').text('Yes');
-		// }
-	// });
+
+<script type="text/javascript">
+$(function(){
+	$('#tooltip_create_button').tooltip({
+		html: true,
+		trigger: 'click',
+		title: 'You have exceeded your website creation limit. Please contact us for more info.',
+		delay: { show: 500, hide: 100 }
+	});
+	$('#website').delegate('.deleteWebsite', 'click', function(e) {
+		if(e.shiftKey == true) {
+			$.ajax({
+				'url': 'manage/del_web',
+				'data': {'website_id': $(e.target).attr('alt')},
+				'beforeSend': function(a,b,c) {
+				},
+				'success': function(html) {
+					$(e.target).parents('tr').slideUp();
+				}
+			});
+		} else {
+			var webId = $(this).attr('alt');
+			$('.website_id').val(webId);
+			$('#myModal_delete_website').modal('show');
+			$('#dwyes').removeAttr('disabled');
+			$('#dwyes').text('Yes');
+		}
+	});
 	
-	// $('#delete_website').ajaxForm({
-		// url: 'manage/delete_website',
-		// beforeSubmit: function(formData, jqForm, options) {
-			// $('#dwyes').attr('disabled','disabled');
-			// $('#dwyes').html('Loading...');
-		// },
-		// success: function(html) {
-			// location.reload();
-		// }
-	// });
+	$('#delete_website').ajaxForm({
+		url: 'manage/delete_website',
+		beforeSubmit: function(formData, jqForm, options) {
+			$('#dwyes').attr('disabled','disabled');
+			$('#dwyes').html('Loading...');
+		},
+		success: function(html) {
+			location.reload();
+		}
+	});
 	
-	// $('.restore_website').on('click', function(ev) {
-		// var website_base_url = $('#website_base_url').val();
-		// var site_id = $(this).attr('alt'),
-			// el = $(this);
-		// $.ajax({
-			// url: website_base_url+'manage/restore_website',
-			// type: 'post',
-			// data: { 'website_id': site_id },
-			// beforeSend: function() {
-				// el.parent().hide();
-			// },
-			// success: function(html) {
-				// location.reload();
-			// }
-		// });
-		// ev.stopPropagation();
-	// });
+	$('.restore_website').on('click', function(ev) {
+		var site_id = $(this).attr('alt'),
+			el = $(this);
+		$.ajax({
+			url: '<?php echo base_url(); ?>manage/restore_website',
+			type: 'post',
+			data: { 'website_id': site_id },
+			beforeSend: function() {
+				el.parent().hide();
+			},
+			success: function(html) {
+				location.reload();
+			}
+		});
+		ev.stopPropagation();
+	});
 		
-	// /* // clear latest tab stored */
-	// sessionStorage.setItem('lastTab', 'details');
-});-->
+	// clear latest tab stored
+	sessionStorage.setItem('lastTab', 'details');
+});
 </script>
 		

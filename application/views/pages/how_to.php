@@ -59,10 +59,12 @@
 												<img src = "<?php echo base_url()?>img/how/step1-1.png">
 											<li> Fill-out &ldquo;Site Name&rdquo; field </li>
 											<li> Upload logo </li>
-											<li> Upload background image or choose from the default backgrounds </li>
+											<li> Upload background image or choose from the default backgrounds 
 												<img src = "<?php echo base_url()?>img/how/step1-2.png">
-											<li> Press "Save" and your website will automatically be generated </li>
+											</li>
+											<li> Press "Save" and your website will automatically be generated 
 												<img src = "<?php echo base_url()?>img/how/step1-3.png">
+											</li>
 										</ol>
 									
 									</dd>

@@ -217,105 +217,93 @@ else
 ?>
 		</table>
 	</div>
-	<input type="hidden" id="market_website_base_url" value="<?php echo base_url(); ?>" />
-	<input type="hidden" id="marketgroup_id" value="<?php echo $rowGroup['marketgroup_id']; ?>" />
-	<input type="hidden" id="market_website_page_invite_approval" value="<?php echo isset($_GET['page']) ? 'invite' : 'aprroval'; ?>" />
 </div>
 
-<!--<script>
-// $(function(){
-	// $('.tooltip_sitename').tooltip();
+<script>
+$(function(){
+	$('.tooltip_sitename').tooltip();
 
-	// $('.on_approve').click(function() {	
-		// var market_website_base_url = $('#market_website_base_url').val();
-		// var element = $(this);
-			// web_id = $(this).parents('.asd').attr('id'),
-			// dataString = { wid: web_id };
-			// console.log(dataString);
-		// $.ajax({
-			// type: "POST",
-			// url: market_website_base_url+'test/approve_web',
-			// data: dataString,
-			// success: function(data) {
-				// element.addClass('btn-success').text('approved');
-			// }
-		// });
-	// });
+	$('.on_approve').click(function() {	
+		var element = $(this);
+			web_id = $(this).parents('.asd').attr('id'),
+			dataString = { wid: web_id };
+			console.log(dataString);
+		$.ajax({
+			type: "POST",
+			url: '<?php echo base_url(); ?>test/approve_web',
+			data: dataString,
+			success: function(data) {
+				element.addClass('btn-success').text('approved');
+			}
+		});
+	});
 
-	// $('.on_reject').click(function() {
-		// var market_website_base_url = $('#market_website_base_url').val();
-		// var tr = $(this).parents('.asd'),
-			// trwid = tr.attr('id'),
-			// dataString = { 'wid': trwid };
-		// $.ajax({
-			// type: "POST",
-			// url: market_website_base_url+'test/remove_web',
-			// data: dataString,
-			// success: function(data) {
-				// tr.slideUp().remove();
-			// }
-		// });
-	// });
+	$('.on_reject').click(function() {
+		var tr = $(this).parents('.asd'),
+			trwid = tr.attr('id'),
+			dataString = { 'wid': trwid };
+		$.ajax({
+			type: "POST",
+			url: '<?php echo base_url(); ?>test/remove_web',
+			data: dataString,
+			success: function(data) {
+				tr.slideUp().remove();
+			}
+		});
+	});
 
-	// $('#search_website')
-		// .bind('keyup',function(e) {
-			// var market_website_base_url = $('#market_website_base_url').val();
-			// var marketgroup_id = $('#marketgroup_id').val();
-			// var x = $(this).val();
-			// var content = $(this).attr('alt');
-			// var dataString = { 'content': content, 'search_by': x, 'group_id': marketgroup_id };
-			// if(e.keyCode == 13)
-			// {
-				// $.ajax({
-					// type: "POST",
-					// url: market_website_base_url+'test/search_web',
-					// data: dataString,
-					// success: function(html) {
-						// $('.market_table').html(html);
-					// }
-				// });
-			// }
-		// })
-		// .click(function() {
-			// $('.detectName').css('color','#EAB82E');
-			// setTimeout(function(){
-				// $('.detectName').css('color','#777');
-			// },1000);
-		// });
+	$('#search_website')
+		.bind('keyup',function(e) {
+			var x = $(this).val();
+			var content = $(this).attr('alt');
+			var dataString = { 'content': content, 'search_by': x, 'group_id': '<?php echo $rowGroup['marketgroup_id']; ?>' };
+			if(e.keyCode == 13)
+			{
+				$.ajax({
+					type: "POST",
+					url: '<?php echo base_url(); ?>test/search_web',
+					data: dataString,
+					success: function(html) {
+						$('.market_table').html(html);
+					}
+				});
+			}
+		})
+		.click(function() {
+			$('.detectName').css('color','#EAB82E');
+			setTimeout(function(){
+				$('.detectName').css('color','#777');
+			},1000);
+		});
 	
-	// $('.market_table').delegate('.on_notify','click', function(e) {
-		// var market_website_base_url = $('#market_website_base_url').val();
-		// var marketgroup_id = $('#marketgroup_id').val();
-		// var tr = $(this).parents('.asd');
-		// var trwid = tr.attr('id');
-		// var dataString = { 'wid': trwid, 'group_id': marketgroup_id };
-		// $.ajax({
-			// type: "POST",
-			// url: market_website_base_url+'test/on_invite',
-			// data: dataString,
-			// success: function(data) {
-				// if(data == 'success') {
-					// $(e.target).text('pending').addClass('disabled').removeClass('on_notify');
-				// }
-			// }
-		// });	
-	// });
+	$('.market_table').delegate('.on_notify','click', function(e) {
+		var tr = $(this).parents('.asd');
+		var trwid = tr.attr('id');
+		var dataString = { 'wid': trwid, 'group_id': '<?php echo $rowGroup['marketgroup_id']; ?>' };
+		$.ajax({
+			type: "POST",
+			url: '<?php echo base_url(); ?>test/on_invite',
+			data: dataString,
+			success: function(data) {
+				if(data == 'success') {
+					$(e.target).text('pending').addClass('disabled').removeClass('on_notify');
+				}
+			}
+		});	
+	});
 	
-	// $('#search_filter').change(function() {
-		// var market_website_base_url = $('#market_website_base_url').val();
-		// var marketgroup_id = $('#marketgroup_id').val();
-		// var market_website_page_invite_approval = $('#market_website_page_invite_approval').val();
-		// var val = $(this).val();
-		// var content = market_website_page_invite_approval;
-		// var dataString = 'content='+content+'&filter_by='+val+'&group_id='+marketgroup_id;
-		// $.ajax({
-			// type: "POST",
-			// url: market_website_base_url+'test/filter_web',
-			// data: dataString,
-			// success: function(html) {
-				// $('.market_table').html(html);
-			// }
-		// });	
-	// });
-// });
-</script>-->
+	$('#search_filter').change(function() {
+		var val = $(this).val();
+		var content = '<?php echo isset($_GET['page']) ? 'invite' : 'aprroval'; ?>';
+		var dataString = 'content='+content+'&filter_by='+val+'&group_id=<?php echo $rowGroup['marketgroup_id']; ?>';
+		$.ajax({
+			type: "POST",
+			url: '<?php echo base_url(); ?>test/filter_web',
+			data: dataString,
+			success: function(html) {
+				$('.market_table').html(html);
+			}
+		});	
+	});
+});
+</script>
