@@ -78,7 +78,7 @@
 ?>
 		<p class="pull-right">
 <?php
-		if($query->num_rows() < $total_website || $this->session->userdata('uid') == 264):
+		if($query->num_rows() < $total_website || $this->session->userdata('uid') == 264 || $this->session->userdata('uid') == 756):
 ?>
 			<a href="<?php echo base_url('create/site'); ?>" class="btn btn-large btn-primary btn_create" rel="popover" data-placement="right" data-content="asdsad"><i class="icon-plus icon-white"></i> Create website</a>
 <?php
